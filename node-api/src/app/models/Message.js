@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const MessageSchema = new mongoose.Schema(
   {
-    conversationId: {
+    chatId: {
       type: String
     },
     sender: {
@@ -10,7 +10,7 @@ const MessageSchema = new mongoose.Schema(
     },
     text: {
       type: String
-    }
+    },
   },
   {
     timestamps: true
