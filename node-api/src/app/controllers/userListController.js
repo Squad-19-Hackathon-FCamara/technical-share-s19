@@ -20,9 +20,9 @@ router.get('/', async (req, res) => {
 // Exibindo um único usuário
 router.get('/:userId', async (req, res) => {
   try {
-    const users = await Users.findById(req.params.userId);
+    const user = await Users.findById(req.params.userId);
 
-    return res.send({ users });
+    return res.send({ user });
   } catch (err) {
     return res.status(400).send({error: 'Error loading Users'});
   }
