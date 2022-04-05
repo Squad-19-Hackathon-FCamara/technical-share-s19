@@ -20,12 +20,19 @@ const HeroSubtitle = styled.h3`
   font-weight: 400;
   margin: 0.625rem 0 2.188rem;
 `
+const SectionTitle = styled.h3`
+  font-size: 1rem;
+  margin-bottom: 0.938rem;
+`
+const SearchMentor = styled.div`
+  margin-bottom: 2.188rem;
+`
+
+const SkillSection = styled.section``
+
+const SkillTree = styled.div``
 
 const Suggestions = styled.div``
-
-const SuggestionsTitle = styled.h3`
-  font-size: 1rem;
-`
 
 const SuggestionsCarousel = styled.div`
   display: flex;
@@ -39,6 +46,9 @@ export {
   HeroTitle,
   HeroSubtitle,
   Suggestions,
-  SuggestionsTitle,
+  SkillSection,
+  SkillTree,
+  SectionTitle,
+  SearchMentor,
   SuggestionsCarousel
 }
