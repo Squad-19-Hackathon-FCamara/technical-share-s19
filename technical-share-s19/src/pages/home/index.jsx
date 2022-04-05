@@ -1,9 +1,7 @@
 import React from 'react'
+import Header from '../../components/Header'
 import {
   Layout,
-  Header,
-  HeaderTitle,
-  HeaderButtons,
   Hero,
   HeroTitle,
   HeroSubtitle,
@@ -15,11 +13,7 @@ import {
 const Home = () => {
   return (
     <Layout>
-      <Header>
-        {/*logo?*/}
-        <HeaderTitle>Technical Share</HeaderTitle>
-        <HeaderButtons>Chat</HeaderButtons>
-      </Header>
+      <Header />
       <Hero>
         <HeroTitle>A maior comunidade de tech skills do Brasil</HeroTitle>
         <HeroSubtitle>

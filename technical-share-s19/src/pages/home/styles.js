@@ -8,18 +8,6 @@ const Layout = styled.div`
   background-color: #e5e5e5;
 `
 
-const Header = styled.header`
-  display: flex;
-  padding: 2.813rem 0;
-  justify-content: space-between;
-`
-const HeaderTitle = styled.h1`
-  font-size: 1.125rem;
-  font-weight: 700;
-`
-
-const HeaderButtons = styled.div``
-
 const Hero = styled.div``
 
 const HeroTitle = styled.h2`
@@ -47,9 +35,6 @@ const SuggestionsCarousel = styled.div`
 
 export {
   Layout,
-  Header,
-  HeaderTitle,
-  HeaderButtons,
   Hero,
   HeroTitle,
   HeroSubtitle,
