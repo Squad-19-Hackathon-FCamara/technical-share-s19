@@ -1,3 +1,6 @@
+#secret auth
+
+/node-api/src/config/
 # Logs
 logs
 *.log
