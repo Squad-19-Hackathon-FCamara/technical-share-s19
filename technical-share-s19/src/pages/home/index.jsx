@@ -67,10 +67,10 @@ const Home = () => {
       </SearchMentor>
 
       {/* áreas de interesse */}
-      <SkillSection>
+      {/* <SkillSection>
         <SectionTitle>Ou pesquise por skills de interesse:</SectionTitle>
         <SkillTree></SkillTree>
-      </SkillSection>
+      </SkillSection> */}
 
       <Suggestions>
         <SectionTitle>Sugestões de mentores para você:</SectionTitle>
