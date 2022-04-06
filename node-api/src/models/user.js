@@ -19,18 +19,16 @@ const UserSchema = new mongoose.Schema({
   },
   cargo: {
     type: String,
-    required: true,
-    select: false
+    required: true
   },
   profissao: {
     type: String,
-    required: true,
-    select: false
+    required: true
   },
   tags: {
     type: Array,
     required: true
-  },
+  }
   //redes sociais?
 })
 
