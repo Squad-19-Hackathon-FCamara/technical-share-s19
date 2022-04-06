@@ -25,18 +25,19 @@ const Home = () => {
       if (!response.ok)
         throw new Error('Erro ao consultar usuários cadastrados!')
       const data = await response.json()
+      const usersList = data.users
 
       let loadedUsers = []
 
-      for (const key in data) {
+      for (const key in usersList) {
         loadedUsers.push({
           id: key,
-          name: data[key].name,
-          email: data[key].email,
-          bio: data[key].bio,
-          technologies: data[key].technologies,
-          job: data[key].job,
-          experience: data[key].experience
+          name: usersList[key].name,
+          email: usersList[key].email,
+          bio: usersList[key].bio,
+          technologies: usersList[key].technologies,
+          job: usersList[key].job,
+          experience: usersList[key].experience
         })
       }
       setUsers(loadedUsers)
