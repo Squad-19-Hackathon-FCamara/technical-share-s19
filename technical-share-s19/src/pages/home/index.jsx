@@ -34,10 +34,9 @@ const Home = () => {
           id: key,
           name: usersList[key].name,
           email: usersList[key].email,
-          bio: usersList[key].bio,
-          technologies: usersList[key].technologies,
-          job: usersList[key].job,
-          experience: usersList[key].experience
+          cargo: usersList[key].cargo,
+          profissao: usersList[key].profissao,
+          tags: usersList[key].tags
         })
       }
       setUsers(loadedUsers)
@@ -49,9 +48,15 @@ const Home = () => {
   }, [])
 
   const userList = users.map(user => (
-    <Card key={user.id} username={user.name} />
+    <Card
+      key={user.id}
+      username={user.name}
+      tags={user.tags}
+      profissao={user.profissao}
+      cargo={user.cargo}
+    />
   ))
-
+  console.log(userList)
   return (
     <Layout>
       <Header />
