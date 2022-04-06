@@ -4,7 +4,7 @@ const Layout = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 0 1.25rem;
+  padding: 2.813rem 1.25rem;
   background-color: #e5e5e5;
 `
 
@@ -38,6 +38,7 @@ const SuggestionsCarousel = styled.div`
   display: flex;
   flex-direction: row;
   gap: 0.938rem;
+  overflow-x: scroll;
 `
 
 export {

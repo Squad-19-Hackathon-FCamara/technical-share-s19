@@ -6,7 +6,8 @@ const Card = props => {
 
   return (
     <Container>
-      <UserPhoto src={props.photo} />
+      <UserPhoto src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTscsGIFMi-7cAr-85mUBpImUef5OFhPX2BZw&usqp=CAU" />
+      {/* <UserPhoto src={props.photo} /> FOTO DINÂMICA CADASTRADA PELA PESSOA */}
       <Username>{props.username}</Username>
       {/* <UserTags>{renderUserTags}</UserTags> */}
     </Container>
