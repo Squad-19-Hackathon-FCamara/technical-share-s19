@@ -17,19 +17,20 @@ const UserSchema = new mongoose.Schema({
     required: true,
     select: false
   },
-  bio: {
+  cargo: {
     type: String,
+    required: true,
+    select: false
+  },
+  profissao: {
+    type: String,
+    required: true,
+    select: false
+  },
+  tags: {
+    type: Array,
     required: true
   },
-  technologies: {
-    type: String,
-    required: true
-  },
-  job: {
-    type: String,
-    required: true
-  },
-  experience: { type: Number, required: true } // tratar experiência em anos
   //redes sociais?
 })
 
