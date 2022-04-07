@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import './App.css'
+import Chat from './pages/Chat'
 
 const App = () => {
   return (
@@ -12,6 +13,9 @@ const App = () => {
       </Route>
       <Route path="/profile/">
         <Profile />
+      </Route>
+      <Route path="/chat/:chatId">
+        <Chat />
       </Route>
     </div>
   )

@@ -8,7 +8,9 @@ const Layout = styled.div`
   background-color: #e5e5e5;
 `
 
-const Hero = styled.div``
+const Hero = styled.div`
+  padding-top: 2.813rem;
+`
 
 const HeroTitle = styled.h2`
   font-size: 1.563rem;

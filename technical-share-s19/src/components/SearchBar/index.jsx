@@ -5,7 +5,7 @@ import { Button, Form, Input } from './styles'
 const SearchBar = () => {
   return (
     <Form>
-      <Input placeholder="Digite o nome, cargo, skill ou seguimento" />
+      <Input placeholder="Digite o nome, cargo, skill ou segmento" />
       <Button>{SearchIcon}</Button>
     </Form>
   )
