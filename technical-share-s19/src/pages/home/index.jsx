@@ -57,6 +57,7 @@ const Home = () => {
   ))
 
   function searchResultList(obj) {
+    console.log(obj)
     const teste = obj.map(item => (
       <Card
         key={item.id}
@@ -67,7 +68,7 @@ const Home = () => {
       />
     ))
 
-    setResultList(teste);
+    setResultList(teste)
   }
 
   return (
