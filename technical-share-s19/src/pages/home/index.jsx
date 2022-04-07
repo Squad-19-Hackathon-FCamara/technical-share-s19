@@ -7,16 +7,15 @@ import {
   Hero,
   HeroTitle,
   HeroSubtitle,
-  Suggestions,
+  CardsSection,
   SectionTitle,
-  SuggestionsCarousel,
-  SearchMentor,
-  SkillSection,
-  SkillTree
+  CardsCarousel,
+  SearchMentor
 } from './styles'
 
 const Home = () => {
   const [users, setUsers] = useState([])
+  const [resultList, setResultList] = useState([])
   const [error, setError] = useState(false)
 
   useEffect(() => {
@@ -56,7 +55,21 @@ const Home = () => {
       cargo={user.cargo}
     />
   ))
-  console.log(userList)
+
+  function searchResultList(obj) {
+    const teste = obj.map(item => (
+      <Card
+        key={item.id}
+        username={item.name}
+        tags={item.tags}
+        profissao={item.profissao}
+        cargo={item.cargo}
+      />
+    ))
+
+    setResultList(teste);
+  }
+
   return (
     <Layout>
       <Header />
@@ -68,7 +81,7 @@ const Home = () => {
       </Hero>
       <SearchMentor>
         <SectionTitle>Pesquise por mentores:</SectionTitle>
-        <SearchBar />
+        <SearchBar users={users} results={searchResultList} />
       </SearchMentor>
 
       {/* áreas de interesse */}
@@ -77,10 +90,15 @@ const Home = () => {
         <SkillTree></SkillTree>
       </SkillSection> */}
 
-      <Suggestions>
+      <CardsSection>
+        <SectionTitle>Resultados da busca:</SectionTitle>
+        <CardsCarousel>{resultList}</CardsCarousel>
+      </CardsSection>
+
+      <CardsSection>
         <SectionTitle>Sugestões de mentores para você:</SectionTitle>
-        <SuggestionsCarousel>{userList}</SuggestionsCarousel>
-      </Suggestions>
+        <CardsCarousel>{userList}</CardsCarousel>
+      </CardsSection>
     </Layout>
   )
 }
