@@ -61,7 +61,7 @@ const Login = () => {
       }
 
       <div>
-        <RedirectCadastro href="/cadastro">
+        <RedirectCadastro href="/register">
           Ops, ainda não tem cadastro? Fazer cadastro
         </RedirectCadastro>
       </div>
