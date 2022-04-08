@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
+import AuthContext from "../../context/authContext";
 import {
   FormBtn,
   FormLogin,
@@ -13,21 +14,15 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const userLogin = async (e) => {
-    e.preventDefault();
+  let userInput = { email: email, password: password }
 
-    let user = { email: email, password: password }
-    const response = await fetch('http://localhost:3003/users/login', { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(user) })
-
-    const data = await response.json();
-    console.log(data);
-  }
+  const { userLogin } = useContext(AuthContext);
 
   return (
     <>
       <HeaderTitle>Technical Share</HeaderTitle>
 
-      <FormLogin onSubmit={userLogin}>
+      <FormLogin>
         <div>
           <InputLabel htmlFor="email">E-mail</InputLabel>
           <InputLogin placeholder="Seu email da empresa" id="email" name="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required></InputLogin>
@@ -38,7 +33,7 @@ const Login = () => {
           <InputLogin placeholder="Sua senha ultrasecreta" id="senha" name="senha" type="password" value={password} onChange={e => setPassword(e.target.value)} required></InputLogin>
         </div>
 
-        <FormBtn type="submit">Entrar</FormBtn>
+        <FormBtn type="submit" onClick={userLogin(userInput)}>Entrar</FormBtn>
       </FormLogin>
 
       <div>
