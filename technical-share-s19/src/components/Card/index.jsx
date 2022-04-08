@@ -13,11 +13,13 @@ import {
 const Card = props => {
   // const tagsMock = ["html", "css", "javascript", "react", "node"]
 
-  const renderUserTags = props.tags.map(tag => <Tag /* key */ tag={tag} />)
+  const renderUserTags = props.tags.map(tag => (
+    <Tag key={Math.random()} tag={tag} />
+  ))
 
   return (
     <Container>
-      <UserPhoto src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTscsGIFMi-7cAr-85mUBpImUef5OFhPX2BZw&usqp=CAU" />
+      <UserPhoto src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" />
       {/* <UserPhoto src={props.photo} /> FOTO DINÂMICA CADASTRADA PELA PESSOA */}
       <UserInfo>
         <Username>{props.username}</Username>

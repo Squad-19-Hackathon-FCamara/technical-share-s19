@@ -11,6 +11,7 @@ const Form = styled.form`
 
 const Input = styled.input`
   border: none;
+  outline-style: none;
   border-radius: 15px;
   width: 100%;
   height: 2.5rem;

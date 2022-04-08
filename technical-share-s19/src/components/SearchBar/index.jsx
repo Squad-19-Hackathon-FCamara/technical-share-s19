@@ -1,30 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { SearchIcon } from '../../assets/icons'
 import { Button, Form, Input } from './styles'
 
 const SearchBar = props => {
-  const [inputValue, setInputValue] = useState('')
-
-  function filterUsers(e) {
-    e.preventDefault()
-    const usersList = props.users
-    const searchResult = usersList.filter(
-      user =>
-        user.name.toLowerCase().includes(inputValue.toLowerCase()) ||
-        user.cargo.toLowerCase().includes(inputValue.toLowerCase()) ||
-        user.profissao.toLowerCase().includes(inputValue.toLowerCase())
-      // user.tags.toLowerCase().includes(inputValue.toLowerCase())
-    )
-    props.results(searchResult)
-  }
-
   return (
-    <Form onSubmit={filterUsers}>
+    <Form onSubmit={e => props.filterUsers(e)}>
       <Input
         id="busca"
-        name="q"
-        value={inputValue}
-        onChange={e => setInputValue(e.target.value)}
+        value={props.value}
+        onChange={e => props.onChange(e.target.value)}
         placeholder="Digite o nome, cargo, skill ou segmento"
         minLength={2}
         type="search"

@@ -16,7 +16,9 @@ import {
 const Home = () => {
   const [users, setUsers] = useState([])
   const [resultList, setResultList] = useState([])
-  const [error, setError] = useState(false)
+  const [resultListVisible, setResultListVisible] = useState(false)
+  const [inputValue, setInputValue] = useState('')
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const getUsers = async () => {
@@ -42,9 +44,23 @@ const Home = () => {
     }
 
     getUsers().catch(error => {
+      console.log(error.message)
       setError(error.message)
     })
   }, [])
+
+  function filterUsers(e) {
+    e.preventDefault()
+    const searchResult = users.filter(
+      user =>
+        user.name.toLowerCase().includes(inputValue.toLowerCase()) ||
+        user.cargo.toLowerCase().includes(inputValue.toLowerCase()) ||
+        user.profissao.toLowerCase().includes(inputValue.toLowerCase())
+      // user.tags.toLowerCase().includes(inputValue.toLowerCase())
+    )
+    setResultListVisible(true)
+    setResultList(searchResult)
+  }
 
   const userList = users.map(user => (
     <Card
@@ -56,20 +72,15 @@ const Home = () => {
     />
   ))
 
-  function searchResultList(obj) {
-    console.log(obj)
-    const teste = obj.map(item => (
-      <Card
-        key={item.id}
-        username={item.name}
-        tags={item.tags}
-        profissao={item.profissao}
-        cargo={item.cargo}
-      />
-    ))
-
-    setResultList(teste)
-  }
+  const searchResults = resultList.map(user => (
+    <Card
+      key={user.id}
+      username={user.name}
+      tags={user.tags}
+      profissao={user.profissao}
+      cargo={user.cargo}
+    />
+  ))
 
   return (
     <Layout>
@@ -82,23 +93,29 @@ const Home = () => {
       </Hero>
       <SearchMentor>
         <SectionTitle>Pesquise por mentores:</SectionTitle>
-        <SearchBar users={users} results={searchResultList} />
+        <SearchBar
+          value={inputValue}
+          onChange={setInputValue}
+          filterUsers={filterUsers}
+        />
       </SearchMentor>
 
-      {/* áreas de interesse */}
-      {/* <SkillSection>
-        <SectionTitle>Ou pesquise por skills de interesse:</SectionTitle>
-        <SkillTree></SkillTree>
-      </SkillSection> */}
-
-      <CardsSection>
-        <SectionTitle>Resultados da busca:</SectionTitle>
-        <CardsCarousel>{resultList}</CardsCarousel>
-      </CardsSection>
+      {resultListVisible && (
+        <CardsSection>
+          <SectionTitle>Resultados da busca:</SectionTitle>
+          <CardsCarousel>
+            {resultList.length ? (
+              searchResults
+            ) : (
+              <p>Nenhum resultado encontrado.</p>
+            )}
+          </CardsCarousel>
+        </CardsSection>
+      )}
 
       <CardsSection>
         <SectionTitle>Sugestões de mentores para você:</SectionTitle>
-        <CardsCarousel>{userList}</CardsCarousel>
+        <CardsCarousel>{!error ? userList : error}</CardsCarousel>
       </CardsSection>
     </Layout>
   )
