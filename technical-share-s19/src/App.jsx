@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import Profile from './pages/Profile'
 import './App.css'
 import Chat from './pages/Chat'
@@ -11,12 +12,17 @@ const App = () => {
   const { user } = useContext(AuthContext)
   return (
     <Switch>
-      <Route path="/">{user ? <Home /> : <Login />}</Route>
+      <Route path="/register">
+        <Register />
+      </Route>
       <Route path="/profile/">
-        <Profile />
+        {user ? <Profile /> : <Redirect to="/" />}
       </Route>
       <Route path="/chat/:chatId">
-        <Chat />
+        {user ? <Chat /> : <Redirect to="/" />}
+      </Route>
+      <Route path="/">
+        {user ? <Home /> : <Login />}
       </Route>
     </Switch>
   )
