@@ -2,7 +2,7 @@ const express = require ("express")
 const router = express.Router()
 const {newChat, findChatById} = require("../repository/chatRepository")
 
-//new chat
+//Cria um novo chat
 async function createChat(req,res){
     const {senderId, receiverId} = req.body
    
@@ -15,7 +15,7 @@ async function createChat(req,res){
 
 } 
 
-// get chat of an user
+// Mostra os chats em que um Usuario está
 
 async function getChatById (req,res){
     try {

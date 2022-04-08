@@ -2,14 +2,14 @@ const User = require('../models/user')
 const Users = require('../models/user')
 
 
-// Seleciona usario por email
+// Procura um usuario pelo email
 async function getSpecificUserByEmail(email) {
     const user = await User.findOne({email})
     return user
 }
 
 
-// Cria o Usuario (Repetido da linha 4 ?)
+// Cria um novo Usuario 
 async function generateUser(user) {
     const newUser = await User.create(user)
     return newUser
@@ -21,7 +21,7 @@ async function getUsers() {
     return users
 }
 
-//Recebe um usuario especifico 
+//Recebe um usuario especifico pelo Id
 async function getSpecificUser(req) {
     const user = await Users.findById(req.params.userId)
     return user

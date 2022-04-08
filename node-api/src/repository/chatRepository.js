@@ -1,13 +1,13 @@
 const Chat = require('../models/Chat')
 
-// new chat
+// Cria um novo chat
 async function newChat(senderId,receiverId) { 
     const chat = new Chat({members:[senderId,receiverId]})
     const savedChat = await chat.save()
     return savedChat
 }
 
-//get chat by Id
+// Procura um chat pelo Id do usuario
 async function findChatById(userId) {
 
     const chat = await Chat.find({userId})

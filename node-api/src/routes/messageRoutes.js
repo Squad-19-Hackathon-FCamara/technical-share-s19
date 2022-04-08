@@ -1,4 +1,3 @@
-//Request the messages
 const express = require('express')
 const { saveMessage, getMessagesByChatId } = require('../controllers/messagesController')
 

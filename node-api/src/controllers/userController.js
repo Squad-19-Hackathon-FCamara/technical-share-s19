@@ -19,7 +19,7 @@ async function listUsers(req,res) {
     return res.send({users})
     }catch (err) {return res.status(400).send({error:"Erro ao carregar usuarios"})} 
 }
-//Lista um usuario
+//Lista um usuario especifico
 async function listUser (req,res) {
     
    try{
@@ -55,6 +55,8 @@ async function registerUser(req,res) {
         return res.status(500).send({ msg: error.message })
     }
   }
+
+  // Loga o usuario
 
   async function loginUser(req,res) {
       try{

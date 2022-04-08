@@ -31,7 +31,7 @@ async function createUser(user) {
     
 }
 
-// Validacao Usuario e Senha
+// Validacao o Usuario
 async function validateUser(email) {
     
         const user = await getSpecificUserByEmail(email)
@@ -40,7 +40,7 @@ async function validateUser(email) {
       }
     return user
 }
-
+// Valida a Senha
     async function validatePassword(email, password) {
         const user = await getSpecificUserByEmail(email)
       if (!(await bcrypt.compare(password, user.password))){

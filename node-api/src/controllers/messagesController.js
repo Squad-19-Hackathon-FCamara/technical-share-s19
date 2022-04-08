@@ -2,7 +2,7 @@ const express = require ("express")
 const router = express.Router()
 const {createMessage, messageByChatId} = require("../repository/messageRepository")
 
-// add new messages
+// Cria novas mensagens
 
 async function saveMessage(req,res) {
 
@@ -15,7 +15,7 @@ async function saveMessage(req,res) {
 
 }
 
-// get the messages from a chat 
+// Mostra as mensagens de um Chat
 
 async function getMessagesByChatId(req,res) {
     try{
