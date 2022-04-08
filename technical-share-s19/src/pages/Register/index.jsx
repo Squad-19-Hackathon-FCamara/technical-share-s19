@@ -14,15 +14,22 @@ const Register = () => {
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const [role, setRole] = useState('')
-  const [tags, setTags] = useState('')
+  const [tag, setTag] = useState('')
+  const [tagList, setTagList] = useState([])
 
   const {userRegister, error } = useContext(AuthContext);
 
-  let userInput = { email: email, password: password, name: name, role: role, tags: tags }
+  let userInput = { email: email, password: password, name: name, role: role, tags: tagList }
 
   const submitUserInput = e => {
     e.preventDefault()
     userRegister(userInput)
+  }
+
+  const addTagToList = e => {
+    e.preventDefault();
+    setTagList(oldArray => [...oldArray, tag]);
+    setTag('');
   }
 
   return (
@@ -90,10 +97,10 @@ const Register = () => {
             id="tags"
             name="tags"
             type="text"
-            value={tags}
-            onChange={e => setTags(e.target.value)}
+            value={tag}
+            onChange={e => setTag(e.target.value)}
           ></InputLogin>
-          <SkillsBtn>Adicionar</SkillsBtn>
+          <SkillsBtn onClick={addTagToList}>Adicionar</SkillsBtn>
           </div>
         </div>
 
