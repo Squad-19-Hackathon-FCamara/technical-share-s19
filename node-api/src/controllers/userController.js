@@ -46,7 +46,7 @@ async function registerUser(req,res) {
       return res.status(201).send({ user:newUser })
     }
   } catch(error) {
-    return res.status(500).send({ msg: error.message })
+    return res.status(401).send({ msg: error.message })
   }
 }
 

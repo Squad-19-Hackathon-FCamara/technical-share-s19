@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Switch>
       <Route path="/register">
-        <Register />
+        {user ? <Redirect to="/" /> : <Register />}
       </Route>
       <Route path="/profile/">
         {user ? <Profile /> : <Redirect to="/" />}
