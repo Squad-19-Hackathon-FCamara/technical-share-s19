@@ -11,7 +11,8 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-require('./controllers/index')(app)
+require('./routes/index')(app)
+
 
 // Inicialize port
-app.listen(3003)
+app.listen(3003,()=>console.log('Server Running ' + 3003))

@@ -1,33 +1,31 @@
 const express = require ("express")
 const router = express.Router()
+const {newChat, findChatById} = require("../repository/chatRepository")
 
-const Chat = require("../models/chat")
-
-//new chat
-router.post("/",async (req,res) =>{
-    const newChat = new Chat({
-    members: [req.body.senderId, req.body.receiverId],
-    })
+//Cria um novo chat
+async function createChat(req,res){
+    const {senderId, receiverId} = req.body
+   
     try {
-        const savedChat = await newChat.save()
-        res.status(200).json(savedChat)
+        const savedChat = await newChat(senderId,receiverId)     
+       return res.status(200).json(savedChat)
     }catch(err){
         res.status(500).json(err)
     }
 
-}) 
+} 
 
-// get chat of an user
+// Mostra os chats em que um Usuario está
 
-router.get("/:userId", async (req,res)=>{
+async function getChatById (req,res){
     try {
-        const chat = await Chat.find({
-            members: {   $in:[req.params.userId] },
-        })
+        const {userId} = req.params.userId
+        const chat = await findChatById({members:{ $in:[userId]}})
         res.status(200).json(chat)
-    }catch(err) {
+
+    }    catch(err) {
         res.status(500).json(err)
     }
-})
+}
 
-module.exports = app => app.use("/chat", router );
+module.exports = {createChat, getChatById}
