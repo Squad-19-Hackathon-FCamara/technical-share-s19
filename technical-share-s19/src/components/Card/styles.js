@@ -25,7 +25,7 @@ export const UserInfo = styled.div`
   grid-gap: 3px;
 `
 
-export const UserCargo = styled.span`
+export const UserRole = styled.span`
   font-size: 0.875rem;
   font-weight: 700;
 `

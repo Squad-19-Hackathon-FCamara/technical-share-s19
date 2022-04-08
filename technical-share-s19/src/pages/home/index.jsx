@@ -35,7 +35,7 @@ const Home = () => {
           id: key,
           name: usersList[key].name,
           email: usersList[key].email,
-          cargo: usersList[key].cargo,
+          role: usersList[key].role,
           tags: usersList[key].tags
         })
       }
@@ -52,7 +52,7 @@ const Home = () => {
     const searchResult = users.filter(
       user =>
         user.name.toLowerCase().includes(inputValue.toLowerCase()) ||
-        user.cargo.toLowerCase().includes(inputValue.toLowerCase())
+        user.role.toLowerCase().includes(inputValue.toLowerCase())
       // user.tags.toLowerCase().includes(inputValue.toLowerCase())
     )
     setResultListVisible(true)
@@ -64,7 +64,7 @@ const Home = () => {
       key={user.id}
       username={user.name}
       tags={user.tags}
-      cargo={user.cargo}
+      role={user.role}
     />
   ))
 
@@ -73,7 +73,7 @@ const Home = () => {
       key={user.id}
       username={user.name}
       tags={user.tags}
-      cargo={user.cargo}
+      role={user.role}
     />
   ))
 

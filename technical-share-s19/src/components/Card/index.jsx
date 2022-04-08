@@ -2,7 +2,7 @@ import React from 'react'
 import Tag from '../Tag'
 import {
   Container,
-  UserCargo,
+  UserRole,
   UserInfo,
   Username,
   UserPhoto,
@@ -23,7 +23,7 @@ const Card = props => {
       <UserInfo>
         <Username>{props.username}</Username>
         <div>
-          <UserCargo> {props.cargo}</UserCargo>
+          <UserRole> {props.role}</UserRole>
         </div>
         <UserTags>{renderUserTags}</UserTags>
       </UserInfo>
