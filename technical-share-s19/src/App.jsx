@@ -9,7 +9,6 @@ import AuthContext from './context/authContext'
 
 const App = () => {
   const { user } = useContext(AuthContext)
-  console.log(user)
   return (
     <Switch>
       <Route path="/">{user ? <Home /> : <Login />}</Route>

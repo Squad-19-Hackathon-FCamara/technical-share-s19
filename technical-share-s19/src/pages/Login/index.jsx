@@ -15,7 +15,7 @@ const Login = () => {
 
   let userInput = { email: email, password: password }
 
-  const { userLogin } = useContext(AuthContext)
+  const { userLogin, error } = useContext(AuthContext)
 
   const submitUserInput = e => {
     e.preventDefault()
@@ -55,6 +55,10 @@ const Login = () => {
 
         <FormBtn type="submit">Entrar</FormBtn>
       </FormLogin>
+
+      {
+        error && <p>{error}</p>
+      }
 
       <div>
         <RedirectCadastro href="/cadastro">
