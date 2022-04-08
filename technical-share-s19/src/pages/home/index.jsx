@@ -22,7 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     const getUsers = async () => {
-      const response = await fetch('http://localhost:3003/userList/')
+      const response = await fetch('http://localhost:3003/users/')
       if (!response.ok)
         throw new Error('Erro ao consultar usuários cadastrados!')
       const data = await response.json()
@@ -44,7 +44,6 @@ const Home = () => {
     }
 
     getUsers().catch(error => {
-      console.log(error.message)
       setError(error.message)
     })
   }, [])
