@@ -20,10 +20,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  profissao: {
-    type: String,
-    required: true
-  },
   tags: {
     type: Array,
     required: true

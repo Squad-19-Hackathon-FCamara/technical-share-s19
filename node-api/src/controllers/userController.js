@@ -29,13 +29,12 @@ async function listUser (req,res) {
 // Registra um novo usuario
 async function registerUser(req,res) {
   try {
-    const { name, email, cargo, profissao, tags, password } = req.body
+    const { name, email, cargo, tags, password } = req.body
 
     const user = {
       name:name,
       email:email, 
-      cargo:cargo, 
-      profissao:profissao, 
+      cargo:cargo,
       tags:tags, 
       password:password
     }

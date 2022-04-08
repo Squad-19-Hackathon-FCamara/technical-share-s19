@@ -29,10 +29,6 @@ export const UserCargo = styled.span`
   font-size: 0.875rem;
   font-weight: 700;
 `
-export const UserProfissao = styled.span`
-  font-size: 0.875rem;
-  font-weight: 700;
-`
 
 export const UserTags = styled.div`
   display: flex;

@@ -6,7 +6,6 @@ import {
   UserInfo,
   Username,
   UserPhoto,
-  UserProfissao,
   UserTags
 } from './styles'
 
@@ -24,7 +23,6 @@ const Card = props => {
       <UserInfo>
         <Username>{props.username}</Username>
         <div>
-          <UserProfissao>{props.profissao}</UserProfissao>
           <UserCargo> {props.cargo}</UserCargo>
         </div>
         <UserTags>{renderUserTags}</UserTags>
