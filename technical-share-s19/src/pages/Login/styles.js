@@ -19,3 +19,7 @@ export const InputLogin = styled.input`
 export const FormBtn = styled.button`
 
 `
+
+export const RedirectCadastro = styled.a`
+
+`

@@ -32,13 +32,14 @@ async function createUser(user) {
 }
 
 // Validacao o Usuario
-async function validateUser(email) {
-    
-        const user = await getSpecificUserByEmail(email)
-    if (!user) {
-        throw Error('Usuário não encontrado!')
-      }
-    return user
+async function validateUser(email) {  
+  const user = await getSpecificUserByEmail(email)
+  
+  if (!user) {
+    throw Error('Usuário não encontrado!')
+  }
+
+  return user
 }
 // Valida a Senha
     async function validatePassword(email, password) {

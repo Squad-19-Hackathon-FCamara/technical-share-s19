@@ -37,19 +37,19 @@ async function registerUser(req,res) {
         const { name, email, cargo, profissao, tags, password } = req.body
 
         const user = {
-            name:name,
-            email:email, 
-            cargo:cargo, 
-            profissao:profissao, 
-            tags:tags, 
-            password:password
+          name:name,
+          email:email, 
+          cargo:cargo, 
+          profissao:profissao, 
+          tags:tags, 
+          password:password
         }
     
         const verifyUser = await verifyExistingUserByEmail(user.email)
         
         if (!verifyUser) {
-            const newUser = await createUser(user)
-            return res.status(201).send({ user:newUser })
+          const newUser = await createUser(user)
+          return res.status(201).send({ user:newUser })
         }
     } catch(error) {
         return res.status(500).send({ msg: error.message })
@@ -59,18 +59,16 @@ async function registerUser(req,res) {
   // Loga o usuario
 
   async function loginUser(req,res) {
-      try{
+      try {
         const { email, password } = req.body
 
         const user = await validateUser(email)
         const token = await validatePassword(email, password)
-      return res.status(201).send({user:user, token:token})
+        return res.status(201).send({user:user, token:token})
 
     } catch(error) {
       return res.status(500).send({ msg: error.message })
     }
   }
   
-
 module.exports = {listUsers, listUser, registerUser, loginUser}
-
