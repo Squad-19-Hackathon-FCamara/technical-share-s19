@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 const AuthContext = createContext({
   user: null
@@ -8,6 +8,13 @@ export const AuthContextProvider = props => {
   const [user, setUser] = useState(null)
   const [error, setError] = useState(null)
   //const [token, setToken] = useState("")
+
+  useEffect(() => {
+    const userLoggedIn = localStorage.getItem("user");
+    const userObject = JSON.parse(userLoggedIn);
+    
+    setUser(userObject);
+  }, [])
 
   const userLogin = async userInput => {
     const response = await fetch('http://localhost:3003/users/login', {
@@ -26,6 +33,7 @@ export const AuthContextProvider = props => {
     const user = data.user
     //const token = data.token
     setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
   }
 
   const userRegister = async userInput => {
