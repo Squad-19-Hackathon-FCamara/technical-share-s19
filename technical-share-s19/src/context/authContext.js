@@ -25,7 +25,7 @@ export const AuthContextProvider = props => {
 
     const user = data.user
     //const token = data.token
-    setUser(user)
+    setUser(user);
   }
 
   const userRegister = async userInput => {
