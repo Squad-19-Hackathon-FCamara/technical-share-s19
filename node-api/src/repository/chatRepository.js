@@ -9,7 +9,7 @@ async function newChat(senderId, receiverId) {
 
 // Procura um chat pelo Id do usuario
 async function findChatByMentorId(mentorId) {
-  const chat = await Chat.find({ mentorId })
+  const chat = await Chat.find(mentorId)
   return chat
 }
 

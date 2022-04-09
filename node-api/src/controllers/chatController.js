@@ -18,7 +18,8 @@ async function createChat(req, res) {
 
 async function getChatByMentorId(req, res) {
   try {
-    const { mentorId } = req.params.mentorId
+    const { mentorId } = req.params
+
     const chat = await findChatByMentorId({ members: { $in: [mentorId] } })
 
     if (!chat) {

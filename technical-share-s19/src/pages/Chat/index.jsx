@@ -17,7 +17,7 @@ const Chat = () => {
   const { user } = useContext(AuthContext)
   const { mentorId } = useParams()
 
-  const chatMembers = { senderId: user._id, receiverId: mentorId }
+  let chatMembers = { senderId: user._id, receiverId: mentorId }
 
   useEffect(() => {
     async function getChatFromDatabase() {
