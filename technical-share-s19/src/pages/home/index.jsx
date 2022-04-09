@@ -52,9 +52,10 @@ const Home = () => {
     const searchResult = users.filter(
       user =>
         user.name.toLowerCase().includes(inputValue.toLowerCase()) ||
-        user.role.toLowerCase().includes(inputValue.toLowerCase())
-      // user.tags.toLowerCase().includes(inputValue.toLowerCase())
+        user.role.toLowerCase().includes(inputValue.toLowerCase()) ||
+        user.tags.filter(item => item.toLowerCase().includes(inputValue.toLowerCase())).length > 0
     )
+
     setResultListVisible(true)
     setResultList(searchResult)
   }
