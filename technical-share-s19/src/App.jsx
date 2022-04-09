@@ -15,15 +15,11 @@ const App = () => {
       <Route path="/register">
         {user ? <Redirect to="/" /> : <Register />}
       </Route>
-      <Route path="/profile/">
-        {user ? <Profile /> : <Redirect to="/" />}
-      </Route>
-      <Route path="/chat/:chatId">
+      <Route path="/profile/">{user ? <Profile /> : <Redirect to="/" />}</Route>
+      <Route path="/chat/:mentorId">
         {user ? <Chat /> : <Redirect to="/" />}
       </Route>
-      <Route path="/">
-        {user ? <Home /> : <Login />}
-      </Route>
+      <Route path="/">{user ? <Home /> : <Login />}</Route>
     </Switch>
   )
 }

@@ -1,12 +1,13 @@
 //Request the messages
 const express = require('express')
-const {createChat, getChatById} = require('../controllers/chatController')
-
+const {
+  createChat,
+  getChatByMentorId
+} = require('../controllers/chatController')
 
 const router = express.Router()
 
 router.post('/', createChat)
-router.get('/:userId', getChatById)
+router.get('/:mentorId', getChatByMentorId)
 
-  
 module.exports = router

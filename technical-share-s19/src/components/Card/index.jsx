@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { ChatButton } from '../Header/styles'
 import Tag from '../Tag'
 import {
   Container,
@@ -24,6 +26,9 @@ const Card = props => {
         <Username>{props.username}</Username>
         <div>
           <UserRole> {props.role}</UserRole>
+          <Link to={'/chat/' + props.id}>
+            <ChatButton>Chat</ChatButton>
+          </Link>
         </div>
         <UserTags>{renderUserTags}</UserTags>
       </UserInfo>

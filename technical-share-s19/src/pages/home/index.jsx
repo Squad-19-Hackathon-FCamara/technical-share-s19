@@ -32,7 +32,8 @@ const Home = () => {
 
       for (const key in usersList) {
         loadedUsers.push({
-          id: key,
+          key: key,
+          id: usersList[key]._id,
           name: usersList[key].name,
           email: usersList[key].email,
           role: usersList[key].role,
@@ -53,7 +54,9 @@ const Home = () => {
       user =>
         user.name.toLowerCase().includes(inputValue.toLowerCase()) ||
         user.role.toLowerCase().includes(inputValue.toLowerCase()) ||
-        user.tags.filter(item => item.toLowerCase().includes(inputValue.toLowerCase())).length > 0
+        user.tags.filter(item =>
+          item.toLowerCase().includes(inputValue.toLowerCase())
+        ).length > 0
     )
 
     setResultListVisible(true)
@@ -63,6 +66,7 @@ const Home = () => {
   const userList = users.map(user => (
     <Card
       key={user.id}
+      id={user.id}
       username={user.name}
       tags={user.tags}
       role={user.role}
@@ -72,6 +76,7 @@ const Home = () => {
   const searchResults = resultList.map(user => (
     <Card
       key={user.id}
+      id={user.id}
       username={user.name}
       tags={user.tags}
       role={user.role}
