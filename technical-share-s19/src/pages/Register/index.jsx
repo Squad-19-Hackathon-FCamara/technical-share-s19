@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react'
+import Tag from '../../components/Tag'
 import AuthContext from '../../context/authContext'
 import {
   FormBtn,
@@ -31,6 +32,10 @@ const Register = () => {
     setTagList(oldArray => [...oldArray, tag]);
     setTag('');
   }
+
+  const renderUserTags = tagList.map(tagItem => (
+    <Tag key={Math.random()} tag={tagItem} />
+  ))
 
   return (
     <>
@@ -103,9 +108,14 @@ const Register = () => {
           <SkillsBtn onClick={addTagToList}>Adicionar</SkillsBtn>
           </div>
         </div>
-
         <FormBtn type="submit">Cadastrar</FormBtn>
       </FormLogin>
+
+      <div>
+        {
+          renderUserTags
+        }
+      </div>
 
       {
         error && <p>{error}</p>
