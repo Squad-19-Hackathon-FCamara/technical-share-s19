@@ -15,14 +15,19 @@ export const ReturnHome = styled.span`
   margin: 2.188rem 0 2.813rem 0;
 `
 
-export const ChatListHeader = styled.div`
-  display: flex;
-  justify-content: flex-start;
+export const Icon = styled.i`
+  height: 2rem;
 `
 
-export const StartedChats =styled.div`
+export const ChatHeader = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 `
-export const Icon = styled.i`
+
+export const ChatBox = styled.div`
+  height: 80vh;
+`
+
+export const MessageForm = styled.form`
+  display: flex;
 `

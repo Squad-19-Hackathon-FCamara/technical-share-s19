@@ -7,3 +7,5 @@ export const Container = styled.div`
   padding: 2.813rem 1.25rem;
   background-color: #e5e5e5;
 `
+export const Username = styled.div`
+`
