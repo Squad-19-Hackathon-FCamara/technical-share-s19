@@ -16,7 +16,8 @@
     "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.9",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

@@ -27,6 +27,6 @@ export const ChatBox = styled.div`
   height: 80vh;
 `
 
-export const MessageInput = styled.div`
+export const MessageForm = styled.form`
   display: flex;
 `
