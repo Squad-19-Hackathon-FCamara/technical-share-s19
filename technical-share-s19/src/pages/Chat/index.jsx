@@ -84,8 +84,12 @@ const Chat = () => {
         <button>agendar</button>
       </ChatHeader>
       <ChatBox>
-        {messages.map(message => {
-          ;<p>{message.message}</p>
+        {messages?.map(message => {
+          return (
+            <div>
+              <p>{message.message}</p>
+            </div>
+          )
         })}
       </ChatBox>
       <MessageInput>
