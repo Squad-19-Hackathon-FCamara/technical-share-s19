@@ -1,11 +1,12 @@
 const express = require('express')
-const { saveMessage, getMessagesByChatId } = require('../controllers/messagesController')
-
+const {
+  saveMessage,
+  getAllMessages
+} = require('../controllers/messagesController')
 
 const router = express.Router()
 
-router.post('/', saveMessage)
-router.get('/:chatId', getMessagesByChatId)
+router.post('/addmessage', saveMessage)
+router.post('/getmessages', getAllMessages)
 
-  
 module.exports = router

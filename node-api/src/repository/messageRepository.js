@@ -1,18 +1,15 @@
 const Message = require('../models/Message')
 
 // Cria uma nova mensagem
-async function createMessage(message){
-    const newMessage  =  new Message(message)
-    const savedMessage = await newMessage.save()
-
-    return savedMessage
+async function createMessage(message) {
+  const newMessage = Message.create(message)
+  return newMessage
 }
 
 // Seleciona as mensagens de um chat pelo seu Id
-async function messageByChatId(chatId){
-    const messages = await Message.find({chatId:chatId})
-    return messages
+async function getMessages(members) {
+  const messages = await Message.find(members).sort({ updatedAt: 1 })
+  return messages
 }
 
-
-module.exports = {createMessage, messageByChatId}
+module.exports = { createMessage, getMessages }
