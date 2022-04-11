@@ -1,13 +1,20 @@
-import Header from "../Header"
-import { ChatListHeader, Container, ReturnHome, StartedChats } from "./styles"
+import { Link } from 'react-router-dom'
+import ChatItem from '../ChatItem'
+import Header from '../Header'
+import {
+  ChatListHeader,
+  Container,
+  Icon,
+  ReturnHome,
+  StartedChats
+} from './styles'
 
+const ChatList = props => {
+  const { user } = props
 
-const ChatList = () => {
-
-
-    return (
-    <Container>  
-            <Header />
+  return (
+    <Container>
+      <Header />
       <ReturnHome>
         <Link to="/home">
           <Icon>{/* {BackIcon}*/}</Icon>Voltar para Home
@@ -17,10 +24,17 @@ const ChatList = () => {
         <h2>Usuário</h2>
         <button>agendar</button>
       </ChatListHeader>
-         <StartedChats>
-            
-         </StartedChats>
-    </Container>)
+      <StartedChats>
+        {user?.conversas.map(conversa => {
+          return (
+            <div>
+              <ChatItem username={conversa.name} id={conversa.id} />
+            </div>
+          )
+        })}
+      </StartedChats>
+    </Container>
+  )
 }
 
 export default ChatList

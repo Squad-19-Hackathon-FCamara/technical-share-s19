@@ -13,77 +13,17 @@ import {
   ChatBox,
   MessageForm
 } from './styles'
+import ChatContainer from '../../components/ChatContainer'
+import ChatList from '../../components/ChatList'
 
 const Chat = () => {
-  const socket = useRef()
+  // const socket = useRef()
   const { user } = useContext(AuthContext)
-  const { mentorId } = useParams()
-  const [message, setMessage] = useState('')
-  const [messages, setMessages] = useState([])
   const [currentChat, setCurrentChat] = useState(undefined)
-  const [arrivalMessage, setArrivalMessage] = useState(null)
-  const scrollRef = useRef()
 
-  useEffect(() => {
-    socket.current = io('http://localhost:3003')
-    socket.current.emit('add-user', user._id)
-  }, [])
-
-  useEffect(() => {
-    async function getMessages() {
-      const response = await axios.post(
-        'http://localhost:3003/message/getmessages',
-        {
-          from: user._id,
-          to: mentorId
-        }
-      )
-      setMessages(response.data)
-    }
-    getMessages()
-  }, [])
-
-  useEffect(() => {
-    if (socket.current) {
-      socket.current.on('msg-receive', message => {
-        setArrivalMessage({ fromSelf: false, message: message })
-        console.log(message)
-      })
-    }
-  }, [])
-
-  const handleSendMessage = e => {
-    e.preventDefault()
-    submitMessage(message)
-    setMessage('')
+  const handleChatChange = chat => {
+    setCurrentChat(chat)
   }
-
-  const submitMessage = async message => {
-    socket.current.emit('send-msg', {
-      from: user._id,
-      to: mentorId,
-      message: message
-    })
-
-    await axios.post('http://localhost:3003/message/addmessage', {
-      from: user._id,
-      to: mentorId,
-      message: message
-    })
-
-    const msgs = [...messages]
-    msgs.push({ fromSelf: true, message: message })
-    setMessages(msgs)
-  }
-
-  useEffect(() => {
-    arrivalMessage &&
-      setMessages(prevMessages => [...prevMessages, arrivalMessage])
-  }, [arrivalMessage])
-
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
 
   return (
     <Container>
@@ -93,29 +33,10 @@ const Chat = () => {
           <Icon>{/* {BackIcon}*/}</Icon>Voltar para Home
         </Link>
       </ReturnHome>
-      <ChatHeader>
-        <h2>Usuário</h2>
-        <button>agendar</button>
-      </ChatHeader>
-      <ChatBox>
-        {messages?.map(message => {
-          return (
-            <div ref={scrollRef} key={message._id}>
-              {' '}
-              {/* verificar se message fromself = true para definir posição da msg na tela */}
-              <p>{message.message}</p>
-            </div>
-          )
-        })}
-      </ChatBox>
-      <MessageForm onSubmit={handleSendMessage}>
-        <input
-          value={message}
-          onChange={e => setMessage(e.target.value)}
-          type="text"
-        />
-        <button>enviar</button>
-      </MessageForm>
+      <div style={{ display: 'flex' }}>
+        <ChatList user={user} />
+        <ChatContainer user={user} currentChat={currentChat} />
+      </div>
     </Container>
   )
 }
