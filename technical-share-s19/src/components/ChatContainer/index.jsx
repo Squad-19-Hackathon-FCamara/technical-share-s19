@@ -41,6 +41,7 @@ const ChatContainer = props => {
     e.preventDefault()
     submitMessage(message)
     setMessage('')
+    createChat()
   }
 
   const submitMessage = async message => {
@@ -59,6 +60,18 @@ const ChatContainer = props => {
     const msgs = [...messages]
     msgs.push({ fromSelf: true, message: message })
     setMessages(msgs)
+  }
+
+  const createChat = async () => {
+    try {
+      const response = await axios.post('http://localhost:3003/chat/create', {
+        from: props.user._id,
+        to: mentorId
+      })
+      console.log(response)
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   useEffect(() => {

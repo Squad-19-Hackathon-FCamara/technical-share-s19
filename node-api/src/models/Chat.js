@@ -2,9 +2,8 @@ const mongoose = require('mongoose')
 
 const ChatSchema = new mongoose.Schema(
   {
-    members: {
-      type: Array
-    }
+    from: { type: String },
+    to: { type: String }
   },
   {
     timestamps: true

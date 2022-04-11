@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from '../../context/authContext'
 import ChatItem from '../ChatItem'
@@ -13,6 +13,14 @@ import {
 
 const ChatList = props => {
   const { user } = useContext(AuthContext)
+  // const [chats, setChats] = useState(null)
+
+  // useEffect(() => {
+  //   const getChatsByUserId = async () => {
+  //     const response = await axios.get('http://localhost:3003/chat/getallchats')
+  //     setChats(response.data)
+  //   }
+  // }, [])
 
   return (
     <Container>
@@ -26,13 +34,13 @@ const ChatList = props => {
         <h2>Mensagens</h2>
       </ChatListHeader>
       <StartedChats>
-        {user?.chats.map(chat => {
+        {/* {chats?.map(chat => {
           return (
-            <div key={chat.id}>
+            <div key={chat._id}>
               <ChatItem username={chat.name} id={chat.id} />
             </div>
           )
-        })}
+        })} */}
       </StartedChats>
     </Container>
   )
