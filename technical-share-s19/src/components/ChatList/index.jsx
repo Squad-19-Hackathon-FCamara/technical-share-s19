@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from '../../context/authContext'
@@ -21,6 +22,15 @@ const ChatList = props => {
   //     setChats(response.data)
   //   }
   // }, [])
+
+  useEffect(() => {
+    async function getChatsByLoggedUser() {
+      await axios.post('http://localhost:3003/chat/getallchats', {
+        from: user._id,
+        to: user._id
+      })
+    }
+  }, [])
 
   return (
     <Container>

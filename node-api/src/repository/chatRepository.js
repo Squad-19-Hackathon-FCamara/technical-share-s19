@@ -22,7 +22,7 @@ async function verifyExistingChat(from, to) {
 
 // Procura um chat pelo Id do usuario
 async function findChatsByUserId(userId) {
-  const chat = await Chat.find(userId)
+  const chat = await Chat.find({ $all: [userId] })
   return chat
 }
 

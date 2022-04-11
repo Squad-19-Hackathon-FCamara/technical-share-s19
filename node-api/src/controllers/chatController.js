@@ -31,9 +31,9 @@ async function createChat(req, res) {
 
 async function getAllChatsByUserId(req, res) {
   try {
-    const { to, from } = req.body
+    const { userId } = req.body
 
-    const chats = await findChatsByUserId({ members: { $all: [to, from] } })
+    const chats = await findChatsByUserId({ userId })
 
     return res.status(200).json(chats)
   } catch (error) {
