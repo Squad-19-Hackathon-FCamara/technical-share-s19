@@ -24,10 +24,13 @@ const UserSchema = new mongoose.Schema({
     type: Array,
     required: true
   },
+
   chats: {
+
     type: Array,
     required: false
   }
+  
   //redes sociais?
 })
 

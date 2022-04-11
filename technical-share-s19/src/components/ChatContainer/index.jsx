@@ -1,3 +1,4 @@
+
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -23,6 +24,7 @@ const ChatContainer = props => {
     const activeChat = user.chats.find(chat => chat.id === mentorId)
     setCurrentChatName(activeChat.name)
 
+
     async function getMessages() {
       const response = await axios.post(
         'http://localhost:3003/message/getmessages',
@@ -34,6 +36,7 @@ const ChatContainer = props => {
       setMessages(response.data)
     }
     getMessages()
+
   }, [mentorId])
 
   const handleSendMessage = e => {
@@ -44,6 +47,7 @@ const ChatContainer = props => {
 
   const submitMessage = async message => {
     socket.current.emit('send-msg', {
+
       from: props.user._id,
       to: mentorId,
       message: message
@@ -59,6 +63,7 @@ const ChatContainer = props => {
     msgs.push({ fromSelf: true, message: message })
     setMessages(msgs)
   }
+
 
   useEffect(() => {
     if (socket.current) {
@@ -76,10 +81,13 @@ const ChatContainer = props => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
+
   return (
     <Container>
       <ChatHeader>
+
         <h2>{currentChatName}</h2>
+
         <button>agendar</button>
       </ChatHeader>
       <ChatBox>
@@ -105,4 +113,6 @@ const ChatContainer = props => {
   )
 }
 
+
 export default ChatContainer
+

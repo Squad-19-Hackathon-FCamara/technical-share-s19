@@ -30,4 +30,6 @@ export const ChatBox = styled.div`
 
 export const MessageForm = styled.form`
   display: flex;
+
 `
+

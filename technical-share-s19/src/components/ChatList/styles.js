@@ -25,5 +25,7 @@ export const StartedChats = styled.div`
   flex-direction: column;
 `
 export const Icon = styled.i`
+
   height: 2rem;
 `
+

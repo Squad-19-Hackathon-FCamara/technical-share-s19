@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom'
 import ChatItem from '../ChatItem'
 import Header from '../Header'
@@ -12,6 +13,7 @@ import {
 const ChatList = props => {
   const { user } = props
 
+
   return (
     <Container>
       <Header />
@@ -21,10 +23,10 @@ const ChatList = props => {
         </Link>
       </ReturnHome>
       <ChatListHeader>
-        <h2>Usuário</h2>
-        <button>agendar</button>
+        <h2>Lista de Conversas</h2>
       </ChatListHeader>
       <StartedChats>
+
         {user?.chats.map(chat => {
           return (
             <div>
@@ -35,6 +37,7 @@ const ChatList = props => {
       </StartedChats>
     </Container>
   )
+
 }
 
 export default ChatList

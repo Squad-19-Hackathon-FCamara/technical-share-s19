@@ -6,8 +6,10 @@ export const Container = styled.div`
   background-color: #e5e5e5;
 `
 
+
 export const Username = styled.div``
 
 export const ProfileIcon = styled.div`
   height: 300px;
 `
+
