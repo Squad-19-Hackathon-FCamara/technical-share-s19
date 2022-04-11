@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import AuthContext from '../../context/authContext'
 import ChatItem from '../ChatItem'
 import Header from '../Header'
 import {
@@ -10,7 +12,7 @@ import {
 } from './styles'
 
 const ChatList = props => {
-  const { user } = props
+  const { user } = useContext(AuthContext)
 
   return (
     <Container>
@@ -21,13 +23,12 @@ const ChatList = props => {
         </Link>
       </ReturnHome>
       <ChatListHeader>
-        <h2>Usuário</h2>
-        <button>agendar</button>
+        <h2>Mensagens</h2>
       </ChatListHeader>
       <StartedChats>
         {user?.chats.map(chat => {
           return (
-            <div>
+            <div key={chat.id}>
               <ChatItem username={chat.name} id={chat.id} />
             </div>
           )
