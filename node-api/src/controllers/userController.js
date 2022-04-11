@@ -29,14 +29,15 @@ async function listUser (req,res) {
 // Registra um novo usuario
 async function registerUser(req,res) {
   try {
-    const { name, email, role, tags, password } = req.body
+    const { name, email, role, tags, password, conversas } = req.body
 
     const user = {
       name:name,
       email:email, 
       role:role,
       tags:tags, 
-      password:password
+      password:password,
+      conversas:conversas
     }
 
     const verifyUser = await verifyExistingUserByEmail(user.email)
@@ -63,5 +64,6 @@ async function loginUser(req,res) {
     return res.status(401).json({ msg: error.message })
   }
 }
+
   
 module.exports = {listUsers, listUser, registerUser, loginUser}

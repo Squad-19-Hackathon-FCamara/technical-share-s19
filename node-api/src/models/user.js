@@ -23,7 +23,12 @@ const UserSchema = new mongoose.Schema({
   tags: {
     type: Array,
     required: true
+  },
+  conversas: {
+    type: Array,
+    required: false
   }
+  
   //redes sociais?
 })
 

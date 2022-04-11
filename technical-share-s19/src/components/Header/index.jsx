@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   ChatButton,
   HeaderButtons,
@@ -13,7 +14,9 @@ const Header = () => {
       <HeaderTitle>Technical Share</HeaderTitle>
       <HeaderButtons>
         <ProfileButton>Perfil</ProfileButton>
+        <Link to="/chat">
         <ChatButton>Chat</ChatButton>
+        </Link>
       </HeaderButtons>
     </HeaderContainer>
   )
