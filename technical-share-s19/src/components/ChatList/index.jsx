@@ -25,10 +25,10 @@ const ChatList = props => {
         <button>agendar</button>
       </ChatListHeader>
       <StartedChats>
-        {user?.conversas.map(conversa => {
+        {user?.chats.map(chat => {
           return (
             <div>
-              <ChatItem username={conversa.name} id={conversa.id} />
+              <ChatItem username={chat.name} id={chat.id} />
             </div>
           )
         })}

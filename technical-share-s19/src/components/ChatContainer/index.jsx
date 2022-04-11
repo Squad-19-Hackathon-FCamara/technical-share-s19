@@ -5,6 +5,8 @@ import { io } from 'socket.io-client'
 import { ChatBox, ChatHeader, Container, MessageForm } from './styles'
 
 const ChatContainer = props => {
+  const { user } = props
+  const [currentChatName, setCurrentChatName] = useState('')
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
   const [arrivalMessage, setArrivalMessage] = useState(null)
@@ -18,6 +20,9 @@ const ChatContainer = props => {
   }, [])
 
   useEffect(() => {
+    const activeChat = user.chats.find(chat => chat.id === mentorId)
+    setCurrentChatName(activeChat.name)
+
     async function getMessages() {
       const response = await axios.post(
         'http://localhost:3003/message/getmessages',
@@ -29,7 +34,7 @@ const ChatContainer = props => {
       setMessages(response.data)
     }
     getMessages()
-  }, [])
+  }, [mentorId])
 
   const handleSendMessage = e => {
     e.preventDefault()
@@ -74,7 +79,7 @@ const ChatContainer = props => {
   return (
     <Container>
       <ChatHeader>
-        <h2>Usuário</h2>
+        <h2>{currentChatName}</h2>
         <button>agendar</button>
       </ChatHeader>
       <ChatBox>
