@@ -1,18 +1,18 @@
-import axios from "axios"
-import { useContext, useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import AuthContext from "../../context/authContext"
-import ChatItem from "../ChatItem"
-import Header from "../Header"
-import { ChatListHeader, Container, Icon, ReturnHome, StartedChats } from "./styles"
 
-const ChatList = (props) => {
-const {user} = useContext(AuthContext)
-const {conversas} = user
-// const [listedUsers, setListedUsers] = useState(null)
-  useEffect(() => {
-    // const data = await axios.get();
-  }, []);
+import { Link } from 'react-router-dom'
+import ChatItem from '../ChatItem'
+import Header from '../Header'
+import {
+  ChatListHeader,
+  Container,
+  Icon,
+  ReturnHome,
+  StartedChats
+} from './styles'
+
+const ChatList = props => {
+  const { user } = props
+
 
   return (
     <Container>
@@ -26,13 +26,18 @@ const {conversas} = user
         <h2>Lista de Conversas</h2>
       </ChatListHeader>
       <StartedChats>
-        {conversas.map(conversa => {
+
+        {user?.chats.map(chat => {
           return (
-            <ChatItem  username={conversa.name} id={conversa.id}/> 
+            <div>
+              <ChatItem username={chat.name} id={chat.id} />
+            </div>
           )
         })}
       </StartedChats>
-    </Container>)
+    </Container>
+  )
+
 }
 
 export default ChatList

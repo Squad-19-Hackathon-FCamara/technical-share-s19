@@ -1,16 +1,30 @@
-import axios from "axios"
-import { useEffect, useRef, useState } from "react"
-import { useParams } from "react-router-dom"
-import { ChatBox, ChatHeader, Container, MessageForm } from "./styles"
 
-const ChatContainer = (props) => {
+import axios from 'axios'
+import React, { useEffect, useRef, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { io } from 'socket.io-client'
+import { ChatBox, ChatHeader, Container, MessageForm } from './styles'
+
+const ChatContainer = props => {
+  const { user } = props
+  const [currentChatName, setCurrentChatName] = useState('')
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
-  const { mentorId } = useParams()
   const [arrivalMessage, setArrivalMessage] = useState(null)
   const scrollRef = useRef()
+  const { mentorId } = useParams()
+  const socket = useRef()
 
   useEffect(() => {
+    socket.current = io('http://localhost:3003')
+    socket.current.emit('add-user', props.user._id)
+  }, [])
+
+  useEffect(() => {
+    const activeChat = user.chats.find(chat => chat.id === mentorId)
+    setCurrentChatName(activeChat.name)
+
+
     async function getMessages() {
       const response = await axios.post(
         'http://localhost:3003/message/getmessages',
@@ -22,28 +36,18 @@ const ChatContainer = (props) => {
       setMessages(response.data)
     }
     getMessages()
-  }, [])
 
-  useEffect(() => {
-    if (props.socket.current) {
-      props.socket.current.on('msg-receive', message => {
-        setArrivalMessage({ fromSelf: false, message: message })
-        console.log(message)
-      })
-    }
-  }, [])
+  }, [mentorId])
 
-  useEffect(() => {
-    arrivalMessage &&
-      setMessages(prevMessages => [...prevMessages, arrivalMessage])
-  }, [arrivalMessage])
-
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+  const handleSendMessage = e => {
+    e.preventDefault()
+    submitMessage(message)
+    setMessage('')
+  }
 
   const submitMessage = async message => {
-    props.socket.current.emit('send-msg', {
+    socket.current.emit('send-msg', {
+
       from: props.user._id,
       to: mentorId,
       message: message
@@ -60,16 +64,30 @@ const ChatContainer = (props) => {
     setMessages(msgs)
   }
 
-  const handleSendMessage = e => {
-    e.preventDefault()
-    submitMessage(message)
-    setMessage('')
-  }
+
+  useEffect(() => {
+    if (socket.current) {
+      socket.current.on('msg-receive', msg => {
+        setArrivalMessage({ fromSelf: false, message: msg })
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    arrivalMessage && setMessages(prev => [...prev, arrivalMessage])
+  }, [arrivalMessage])
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
+
 
   return (
     <Container>
       <ChatHeader>
-        <h2>Usuário</h2>
+
+        <h2>{currentChatName}</h2>
+
         <button>agendar</button>
       </ChatHeader>
       <ChatBox>
@@ -95,4 +113,6 @@ const ChatContainer = (props) => {
   )
 }
 
+
 export default ChatContainer
+

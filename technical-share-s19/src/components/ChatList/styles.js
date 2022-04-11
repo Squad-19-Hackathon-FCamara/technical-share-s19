@@ -20,9 +20,12 @@ export const ChatListHeader = styled.div`
   justify-content: flex-start;
 `
 
-export const StartedChats =styled.div`
+export const StartedChats = styled.div`
   display: flex;
   flex-direction: column;
 `
 export const Icon = styled.i`
+
+  height: 2rem;
 `
+

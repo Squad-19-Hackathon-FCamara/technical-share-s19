@@ -24,7 +24,9 @@ const UserSchema = new mongoose.Schema({
     type: Array,
     required: true
   },
-  conversas: {
+
+  chats: {
+
     type: Array,
     required: false
   }

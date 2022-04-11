@@ -12,14 +12,15 @@ import ChatContainer from '../../components/ChatContainer'
 import ChatList from '../../components/ChatList'
 
 const Chat = () => {
-  const socket = useRef()
+  // const socket = useRef()
   const { user } = useContext(AuthContext)
   const [currentChat, setCurrentChat] = useState(undefined)
 
-  useEffect(() => {
-    socket.current = io('http://localhost:3003')
-    socket.current.emit('add-user', user._id)
-  }, [])
+
+  const handleChatChange = chat => {
+    setCurrentChat(chat)
+  }
+
 
   return (
     <Container>
@@ -29,8 +30,12 @@ const Chat = () => {
           <Icon>{/* {BackIcon}*/}</Icon>Voltar para Home
         </Link>
       </ReturnHome>
-      <ChatList user={user} />
-      <ChatContainer user={user} socket={socket} currentChat={currentChat} />
+
+      <div style={{ display: 'flex' }}>
+        <ChatList user={user} />
+        <ChatContainer user={user} currentChat={currentChat} />
+      </div>
+
     </Container>
   )
 }
