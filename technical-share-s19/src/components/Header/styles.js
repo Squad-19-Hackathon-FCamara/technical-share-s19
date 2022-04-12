@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const HeaderContent = styled.header`
   padding: 30px;
   box-shadow: 1px 3px 3px rgb(45 45 45 / 31%);
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   display: flex;
   justify-content: space-between;
 `

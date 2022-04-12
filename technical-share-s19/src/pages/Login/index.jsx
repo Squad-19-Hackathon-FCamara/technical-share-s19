@@ -1,12 +1,20 @@
 import React, { useContext, useState } from 'react'
+import { SubmitIcon } from '../../assets/icons'
 import Header from '../../components/Header'
 import AuthContext from '../../context/authContext'
 import {
   FormBtn,
+  FormBtnSvg,
+  FormContainer,
+  FormError,
   FormLogin,
+  FormLoginHeader,
+  InputContainer,
   InputLabel,
   InputLogin,
-  RedirectCadastro
+  RedirectCadastro,
+  RedirectCadastroLink,
+  RedirectCadastroText
 } from './styles'
 
 const Login = () => {
@@ -24,45 +32,49 @@ const Login = () => {
 
   return (
     <>
-      <Header/>
+      <Header />
+      <FormContainer>
+        <FormLogin onSubmit={submitUserInput}>
+          <FormLoginHeader>Login</FormLoginHeader>
+          <InputContainer>
+            <InputLabel htmlFor="email">E-mail</InputLabel>
+            <InputLogin
+              placeholder="Seu email da empresa"
+              id="email"
+              name="email"
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            ></InputLogin>
+          </InputContainer>
 
-      <FormLogin onSubmit={submitUserInput}>
-        <div>
-          <InputLabel htmlFor="email">E-mail</InputLabel>
-          <InputLogin
-            placeholder="Seu email da empresa"
-            id="email"
-            name="email"
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-          ></InputLogin>
-        </div>
+          <InputContainer>
+            <InputLabel htmlFor="senha">Senha</InputLabel>
+            <InputLogin
+              placeholder="Sua senha ultrasecreta"
+              id="senha"
+              name="senha"
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            ></InputLogin>
+          </InputContainer>
 
-        <div>
-          <InputLabel htmlFor="senha">Senha</InputLabel>
-          <InputLogin
-            placeholder="Sua senha ultrasecreta"
-            id="senha"
-            name="senha"
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-          ></InputLogin>
-        </div>
+          {errorAuth && <FormError>{errorAuth}</FormError>}
 
-        <FormBtn type="submit">Entrar</FormBtn>
-      </FormLogin>
+          <FormBtn type="submit">
+            <span>Entrar</span>
+            <FormBtnSvg>{SubmitIcon}</FormBtnSvg>
+          </FormBtn>
 
-      {errorAuth && <p>{errorAuth}</p>}
-
-      <div>
-        <RedirectCadastro href="/register">
-          Ops, ainda não tem cadastro? Fazer cadastro
-        </RedirectCadastro>
-      </div>
+          <RedirectCadastro>
+            <RedirectCadastroText>Ops, ainda não tem cadastro? </RedirectCadastroText>
+            <RedirectCadastroLink href="/register">Fazer cadastro</RedirectCadastroLink>
+          </RedirectCadastro>
+        </FormLogin>
+      </FormContainer>
     </>
   )
 }
