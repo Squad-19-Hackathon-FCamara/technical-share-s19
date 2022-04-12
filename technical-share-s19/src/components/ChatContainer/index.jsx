@@ -1,12 +1,13 @@
 
 import axios from 'axios'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { io } from 'socket.io-client'
+import AuthContext from '../../context/authContext'
 import { ChatBox, ChatHeader, Container, MessageForm } from './styles'
 
 const ChatContainer = props => {
-  const { user } = props
+  const { user, users } = useContext(AuthContext)
   const [currentChatName, setCurrentChatName] = useState('')
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
@@ -21,7 +22,7 @@ const ChatContainer = props => {
   }, [])
 
   useEffect(() => {
-    const activeChat = user.chats.find(chat => chat.id === mentorId)
+    const activeChat = users.find(user => user.id === mentorId)
     setCurrentChatName(activeChat.name)
 
 
@@ -43,6 +44,7 @@ const ChatContainer = props => {
     e.preventDefault()
     submitMessage(message)
     setMessage('')
+    createChat()
   }
 
   const submitMessage = async message => {
@@ -64,6 +66,16 @@ const ChatContainer = props => {
     setMessages(msgs)
   }
 
+  const createChat = async () => {
+    try {
+      const response = await axios.post('http://localhost:3003/chat/create', {
+        from: props.user._id,
+        to: mentorId
+      })
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
 
   useEffect(() => {
     if (socket.current) {

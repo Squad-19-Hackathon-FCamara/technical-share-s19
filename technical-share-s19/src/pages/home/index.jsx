@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 import SearchBar from '../../components/SearchBar'
+import AuthContext from '../../context/authContext'
 import {
   Layout,
   Hero,
@@ -14,39 +15,10 @@ import {
 } from './styles'
 
 const Home = () => {
-  const [users, setUsers] = useState([])
+  const { users, errorFetchUsers } = useContext(AuthContext)
   const [resultList, setResultList] = useState([])
   const [resultListVisible, setResultListVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const response = await fetch('http://localhost:3003/users/')
-      if (!response.ok)
-        throw new Error('Erro ao consultar usuários cadastrados!')
-      const data = await response.json()
-      const usersList = data.users
-
-      let loadedUsers = []
-
-      for (const key in usersList) {
-        loadedUsers.push({
-          key: key,
-          id: usersList[key]._id,
-          name: usersList[key].name,
-          email: usersList[key].email,
-          role: usersList[key].role,
-          tags: usersList[key].tags
-        })
-      }
-      setUsers(loadedUsers)
-    }
-
-    getUsers().catch(error => {
-      setError(error.message)
-    })
-  }, [])
 
   function filterUsers(e) {
     e.preventDefault()
@@ -116,7 +88,9 @@ const Home = () => {
 
       <CardsSection>
         <SectionTitle>Sugestões de mentores para você:</SectionTitle>
-        <CardsCarousel>{!error ? userList : error}</CardsCarousel>
+        <CardsCarousel>
+          {!errorFetchUsers ? userList : errorFetchUsers}
+        </CardsCarousel>
       </CardsSection>
     </Layout>
   )

@@ -1,16 +1,29 @@
 const Chat = require('../models/Chat')
 
 // Cria um novo chat
-async function newChat(senderId, receiverId) {
-  const chat = new Chat({ members: [senderId, receiverId] })
+async function newChat(from, to) {
+  const chat = new Chat({ from, to })
   const savedChat = await chat.save()
   return savedChat
 }
 
-// Procura um chat pelo Id do usuario
-async function findChatByMentorId(mentorId) {
-  const chat = await Chat.find(mentorId)
-  return chat
+// Verifica se já existe Chat para os membros informados
+
+async function verifyExistingChat(from, to) {
+  const existingChat = await Chat.findOne({
+    $and: [{ from, to }]
+  })
+  return existingChat
 }
 
-module.exports = { newChat, findChatByMentorId }
+// Procura um chat pelo Id do usuario
+async function findChatsByUserId(userId) {
+  const chats = await Chat.find({
+    $or: [{ from: userId }, { to: userId }]
+  })
+    .populate({ path: 'to', select: ['_id', 'name'] })
+    .populate({ path: 'from', select: ['_id', 'name'] })
+  return chats
+}
+
+module.exports = { newChat, verifyExistingChat, findChatsByUserId }
