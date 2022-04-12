@@ -34,6 +34,10 @@ export const BackIcon = (
   </svg>
 )
 
+export const PlusIcon = (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" fill="#fff" /></svg>
+)
+
 export const OrangeIcon = (
   <svg width="183" height="32" viewBox="0 0 183 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M182.223 6.36328C183.266 9.10474 183.259 12.1817 182.202 14.9172C181.145 17.6527 179.125 19.8227 176.587 20.9498C174.048 22.0769 171.199 22.0689 168.666 20.9274C166.133 19.7858 164.124 17.6044 163.081 14.863L182.223 6.36328Z" fill="#FE885C" />

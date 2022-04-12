@@ -63,7 +63,6 @@ export const Label = css`
 
 export const baseInputStyles = css`
   border: 1px solid #5251A2;
-  box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 15px;
