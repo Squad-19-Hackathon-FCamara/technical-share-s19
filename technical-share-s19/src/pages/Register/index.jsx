@@ -39,6 +39,7 @@ const Register = () => {
 
   const addTagToList = e => {
     e.preventDefault();
+    if (!tag) return;
     setTagList(oldArray => [...oldArray, tag]);
     setTag('');
   }
