@@ -14,7 +14,7 @@ async function createChat(req, res) {
     const existingChat = await verifyExistingChat(from, to)
 
     if (existingChat) {
-      throw new Error('caiu no ifeeeee')
+      return
     }
 
     const savedChat = await newChat(from, to)

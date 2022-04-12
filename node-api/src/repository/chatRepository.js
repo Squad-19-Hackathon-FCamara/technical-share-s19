@@ -16,7 +16,7 @@ async function verifyExistingChat(from, to) {
   return existingChat
 }
 
-// Procura um chat pelo Id do usuario
+// Procura chats pelo id do usuário logado
 async function findChatsByUserId(userId) {
   const chats = await Chat.find({
     $or: [{ from: userId }, { to: userId }]

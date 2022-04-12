@@ -40,7 +40,6 @@ const ChatList = props => {
     getChatsByUserId()
   }, [])
 
-
   return (
     <Container>
       <Header />
@@ -54,16 +53,11 @@ const ChatList = props => {
       </ChatListHeader>
       <StartedChats>
         {chats?.map(chat => {
-          return (
-            <div key={chat._id}>
-              <ChatItem username={chat.title} id={chat.id} />
-            </div>
-          )
+          return <ChatItem key={chat.id} username={chat.title} id={chat.id} />
         })}
       </StartedChats>
     </Container>
   )
-
 }
 
 export default ChatList

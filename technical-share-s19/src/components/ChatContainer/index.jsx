@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -7,7 +6,7 @@ import AuthContext from '../../context/authContext'
 import { ChatBox, ChatHeader, Container, MessageForm } from './styles'
 
 const ChatContainer = props => {
-  const { user, users } = useContext(AuthContext)
+  const { users } = useContext(AuthContext)
   const [currentChatName, setCurrentChatName] = useState('')
   const [message, setMessage] = useState('')
   const [messages, setMessages] = useState([])
@@ -25,7 +24,6 @@ const ChatContainer = props => {
     const activeChat = users.find(user => user.id === mentorId)
     setCurrentChatName(activeChat.name)
 
-
     async function getMessages() {
       const response = await axios.post(
         'http://localhost:3003/message/getmessages',
@@ -37,7 +35,6 @@ const ChatContainer = props => {
       setMessages(response.data)
     }
     getMessages()
-
   }, [mentorId])
 
   const handleSendMessage = e => {
@@ -49,7 +46,6 @@ const ChatContainer = props => {
 
   const submitMessage = async message => {
     socket.current.emit('send-msg', {
-
       from: props.user._id,
       to: mentorId,
       message: message
@@ -73,7 +69,7 @@ const ChatContainer = props => {
         to: mentorId
       })
     } catch (error) {
-      console.log(error.message)
+      console.log('chat já existe :)')
     }
   }
 
@@ -93,11 +89,9 @@ const ChatContainer = props => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-
   return (
     <Container>
       <ChatHeader>
-
         <h2>{currentChatName}</h2>
 
         <button>agendar</button>
@@ -105,11 +99,10 @@ const ChatContainer = props => {
       <ChatBox>
         {messages?.map(message => {
           return (
-            <div ref={scrollRef} key={message._id}>
-              {' '}
-              {/* verificar se message fromself = true para definir posição da msg na tela */}
-              <p>{message.message}</p>
-            </div>
+            // {/* verificar se message fromself = true para definir posição da msg na tela */}
+            <p key={message.id} ref={scrollRef}>
+              {message.message}
+            </p>
           )
         })}
       </ChatBox>
@@ -125,6 +118,4 @@ const ChatContainer = props => {
   )
 }
 
-
 export default ChatContainer
-

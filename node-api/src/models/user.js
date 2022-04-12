@@ -23,15 +23,7 @@ const UserSchema = new mongoose.Schema({
   tags: {
     type: Array,
     required: true
-  },
-
-  chats: {
-
-    type: Array,
-    required: false
   }
-  
-  //redes sociais?
 })
 
 UserSchema.pre('save', async function (next) {

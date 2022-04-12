@@ -16,12 +16,11 @@ const App = () => {
         {user ? <Redirect to="/" /> : <Register />}
       </Route>
       <Route path="/profile/">{user ? <Profile /> : <Redirect to="/" />}</Route>
-      <Route path="/chat">
-        {user ? <Chat /> : <Redirect to="/" />}
-      </Route>
+
       <Route path="/chat/:mentorId">
         {user ? <Chat /> : <Redirect to="/" />}
       </Route>
+      <Route path="/chat">{user ? <Chat /> : <Redirect to="/" />}</Route>
       <Route path="/">{user ? <Home /> : <Login />}</Route>
     </Switch>
   )
