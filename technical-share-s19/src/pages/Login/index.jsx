@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { SubmitIcon } from '../../assets/icons'
+import { OrangeIconMobile, SubmitIcon } from '../../assets/icons'
 import Header from '../../components/Header'
 import AuthContext from '../../context/authContext'
 import {
@@ -9,6 +9,7 @@ import {
   FormError,
   FormLogin,
   FormLoginHeader,
+  FormLoginHeaderMobile,
   InputContainer,
   InputLabel,
   InputLogin,
@@ -36,6 +37,7 @@ const Login = () => {
       <FormContainer>
         <FormLogin onSubmit={submitUserInput}>
           <FormLoginHeader>Login</FormLoginHeader>
+          <FormLoginHeaderMobile>{OrangeIconMobile}</FormLoginHeaderMobile>
           <InputContainer>
             <InputLabel htmlFor="email">E-mail</InputLabel>
             <InputLogin
