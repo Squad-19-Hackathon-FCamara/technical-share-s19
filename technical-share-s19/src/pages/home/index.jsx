@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 import SearchBar from '../../components/SearchBar'

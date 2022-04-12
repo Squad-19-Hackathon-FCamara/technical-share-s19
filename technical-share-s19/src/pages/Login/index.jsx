@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
+import Header from '../../components/Header'
 import AuthContext from '../../context/authContext'
 import {
   FormBtn,
   FormLogin,
-  HeaderTitle,
   InputLabel,
   InputLogin,
   RedirectCadastro
@@ -24,7 +24,7 @@ const Login = () => {
 
   return (
     <>
-      <HeaderTitle>Technical Share</HeaderTitle>
+      <Header/>
 
       <FormLogin onSubmit={submitUserInput}>
         <div>

@@ -1,22 +1,25 @@
 import styled from 'styled-components'
 
-const HeaderContainer = styled.header`
+const HeaderContent = styled.header`
+  padding: 30px;
+  box-shadow: 1px 3px 3px rgb(45 45 45 / 31%);
+  margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
 `
-const HeaderTitle = styled.h1`
-  font-size: 1.125rem;
-  font-weight: 700;
+
+const HeaderContainer = styled.div`
 `
 
 const HeaderButtons = styled.div``
 
 const ChatButton = styled.button``
+
 const ProfileButton = styled.button``
 
 export {
+  HeaderContent,
   HeaderContainer,
-  HeaderTitle,
   HeaderButtons,
   ChatButton,
   ProfileButton

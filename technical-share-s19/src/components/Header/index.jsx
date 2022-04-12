@@ -1,24 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { OrangeIcon } from '../../assets/icons'
 import {
+  HeaderContent,
   ChatButton,
   HeaderButtons,
   HeaderContainer,
-  HeaderTitle,
   ProfileButton
 } from './styles'
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <HeaderContainer>
-      <HeaderTitle>Technical Share</HeaderTitle>
-      <HeaderButtons>
-        <ProfileButton>Perfil</ProfileButton>
-        <Link to="/chat">
-        <ChatButton>Chat</ChatButton>
-        </Link>
-      </HeaderButtons>
-    </HeaderContainer>
+    <HeaderContent>
+      <HeaderContainer>
+        {OrangeIcon}
+      </HeaderContainer>
+
+      {
+        props.buttons &&
+        <HeaderButtons>
+          <ProfileButton>Perfil</ProfileButton>
+          <Link to="/chat">
+            <ChatButton>Chat</ChatButton>
+          </Link>
+        </HeaderButtons>
+      }
+    </HeaderContent>
   )
 }
 
