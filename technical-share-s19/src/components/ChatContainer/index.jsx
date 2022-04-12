@@ -68,7 +68,6 @@ const ChatContainer = props => {
         from: props.user._id,
         to: mentorId
       })
-      console.log(response)
     } catch (error) {
       console.log(error.message)
     }

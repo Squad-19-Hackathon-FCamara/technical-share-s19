@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from '../../context/authContext'
 import ChatItem from '../ChatItem'
@@ -13,23 +13,31 @@ import {
 } from './styles'
 
 const ChatList = props => {
-  const { user } = useContext(AuthContext)
-  // const [chats, setChats] = useState(null)
-
-  // useEffect(() => {
-  //   const getChatsByUserId = async () => {
-  //     const response = await axios.get('http://localhost:3003/chat/getallchats')
-  //     setChats(response.data)
-  //   }
-  // }, [])
+  const { user, users } = useContext(AuthContext)
+  const [chats, setChats] = useState([])
 
   useEffect(() => {
-    async function getChatsByLoggedUser() {
-      await axios.post('http://localhost:3003/chat/getallchats', {
-        from: user._id,
-        to: user._id
+    const getChatsByUserId = async () => {
+      const response = await axios.post(
+        'http://localhost:3003/chat/getallchats',
+        {
+          userId: user._id
+        }
+      )
+      const fetchedChats = response.data
+
+      const list = fetchedChats.map(chat => {
+        let item = {}
+        if (chat.from._id === user._id) {
+          item = { title: chat.to.name, id: chat.to._id }
+        } else {
+          item = { title: chat.from.name, id: chat.from._id }
+        }
+        return item
       })
+      setChats(list)
     }
+    getChatsByUserId()
   }, [])
 
   return (
@@ -44,13 +52,13 @@ const ChatList = props => {
         <h2>Mensagens</h2>
       </ChatListHeader>
       <StartedChats>
-        {/* {chats?.map(chat => {
+        {chats?.map(chat => {
           return (
             <div key={chat._id}>
-              <ChatItem username={chat.name} id={chat.id} />
+              <ChatItem username={chat.title} id={chat.id} />
             </div>
           )
-        })} */}
+        })}
       </StartedChats>
     </Container>
   )

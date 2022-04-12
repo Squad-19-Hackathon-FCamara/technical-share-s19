@@ -9,11 +9,9 @@ const {
 //Cria um novo chat
 async function createChat(req, res) {
   try {
-    console.log(req.body)
     const { from, to } = req.body
 
     const existingChat = await verifyExistingChat(from, to)
-    console.log(existingChat)
 
     if (existingChat) {
       throw new Error('caiu no ifeeeee')
@@ -33,7 +31,7 @@ async function getAllChatsByUserId(req, res) {
   try {
     const { userId } = req.body
 
-    const chats = await findChatsByUserId({ userId })
+    const chats = await findChatsByUserId(userId)
 
     return res.status(200).json(chats)
   } catch (error) {

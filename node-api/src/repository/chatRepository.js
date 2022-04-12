@@ -16,14 +16,14 @@ async function verifyExistingChat(from, to) {
   return existingChat
 }
 
-// const existingChat = await Chat.findOne({
-//   members: { $and: [{$in: [from]}, {$in: [to]}] }
-// })
-
 // Procura um chat pelo Id do usuario
 async function findChatsByUserId(userId) {
-  const chat = await Chat.find({ $all: [userId] })
-  return chat
+  const chats = await Chat.find({
+    $or: [{ from: userId }, { to: userId }]
+  })
+    .populate({ path: 'to', select: ['_id', 'name'] })
+    .populate({ path: 'from', select: ['_id', 'name'] })
+  return chats
 }
 
 module.exports = { newChat, verifyExistingChat, findChatsByUserId }
