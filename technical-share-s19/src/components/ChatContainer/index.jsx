@@ -92,19 +92,40 @@ const ChatContainer = props => {
   return (
     <Container>
       <ChatHeader>
-        <h2>{currentChatName}</h2>
+        <h2>
+          {mentorId ? (
+            currentChatName
+          ) : (
+            <p>
+              Bem vindo aos chats! Escolha uma conversa e comece a tirar suas
+              dúvidas!
+            </p>
+          )}
+        </h2>
 
         <button>agendar</button>
       </ChatHeader>
       <ChatBox>
-        {messages?.map(message => {
-          return (
-            // {/* verificar se message fromself = true para definir posição da msg na tela */}
-            <p key={message.id} ref={scrollRef}>
-              {message.message}
-            </p>
-          )
-        })}
+        {mentorId ? (
+          messages?.map(message => {
+            return (
+              // {/* verificar se message fromself = true para definir posição da msg na tela */}
+              <p key={message.id} ref={scrollRef}>
+                {message.message}
+              </p>
+            )
+          })
+        ) : (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            Selecione uma conversa para iniciar
+          </div>
+        )}
       </ChatBox>
       <MessageForm onSubmit={handleSendMessage}>
         <input

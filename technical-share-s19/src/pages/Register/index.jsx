@@ -7,7 +7,7 @@ import {
   HeaderTitle,
   InputLabel,
   InputLogin,
-  SkillsBtn,
+  SkillsBtn
 } from './styles'
 
 const Register = () => {
@@ -18,9 +18,15 @@ const Register = () => {
   const [tag, setTag] = useState('')
   const [tagList, setTagList] = useState([])
 
-  const {userRegister, error } = useContext(AuthContext);
+  const { userRegister, error } = useContext(AuthContext)
 
-  let userInput = { email: email, password: password, name: name, role: role, tags: tagList }
+  let userInput = {
+    email: email,
+    password: password,
+    name: name,
+    role: role,
+    tags: tagList
+  }
 
   const submitUserInput = e => {
     e.preventDefault()
@@ -28,9 +34,12 @@ const Register = () => {
   }
 
   const addTagToList = e => {
-    e.preventDefault();
-    setTagList(oldArray => [...oldArray, tag]);
-    setTag('');
+    e.preventDefault()
+    if (!tag) {
+      return
+    }
+    setTagList(oldArray => [...oldArray, tag])
+    setTag('')
   }
 
   const renderUserTags = tagList.map(tagItem => (
@@ -41,9 +50,7 @@ const Register = () => {
     <>
       <HeaderTitle>Technical Share</HeaderTitle>
 
-      <p>
-        Vamos te cadastrar para começar essa jornada de aprendizado!
-      </p>
+      <p>Vamos te cadastrar para começar essa jornada de aprendizado!</p>
 
       <FormLogin onSubmit={submitUserInput}>
         <div>
@@ -95,31 +102,27 @@ const Register = () => {
         </div>
 
         <div>
-          <InputLabel htmlFor="tags">Adicione suas skills e seguimentos de experiência:</InputLabel>
+          <InputLabel htmlFor="tags">
+            Adicione suas skills e seguimentos de experiência:
+          </InputLabel>
           <div>
-          <InputLogin
-            placeholder="HTML/CSS, Javascript, Fintech, Food services..."
-            id="tags"
-            name="tags"
-            type="text"
-            value={tag}
-            onChange={e => setTag(e.target.value)}
-          ></InputLogin>
-          <SkillsBtn onClick={addTagToList}>Adicionar</SkillsBtn>
+            <InputLogin
+              placeholder="HTML/CSS, Javascript, Fintech, Food services..."
+              id="tags"
+              name="tags"
+              type="text"
+              value={tag}
+              onChange={e => setTag(e.target.value)}
+            ></InputLogin>
+            <SkillsBtn onClick={addTagToList}>Adicionar</SkillsBtn>
           </div>
         </div>
         <FormBtn type="submit">Cadastrar</FormBtn>
       </FormLogin>
 
-      <div>
-        {
-          renderUserTags
-        }
-      </div>
+      <div>{renderUserTags}</div>
 
-      {
-        error && <p>{error}</p>
-      }
+      {error && <p>{error}</p>}
     </>
   )
 }

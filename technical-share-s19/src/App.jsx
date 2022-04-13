@@ -20,7 +20,9 @@ const App = () => {
       <Route path="/chat/:mentorId">
         {user ? <Chat /> : <Redirect to="/" />}
       </Route>
-      <Route path="/chat">{user ? <Chat /> : <Redirect to="/" />}</Route>
+      <Route path="/chat">
+        <Chat />
+      </Route>
       <Route path="/">{user ? <Home /> : <Login />}</Route>
     </Switch>
   )
