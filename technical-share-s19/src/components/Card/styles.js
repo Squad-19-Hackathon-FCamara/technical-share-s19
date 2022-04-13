@@ -50,15 +50,16 @@ export const UserRole = styled.span`
 
 export const UserTags = styled.div`
   display: flex;
-  gap: 3px;
+  gap: 5px;
   flex-wrap: wrap;
   justify-content: center;
 
   > div, > div:nth-child(2) {
-    border-color: #fff;
-    background-color: rgb(255 255 255 / 80%);
-    padding: 0.8rem;
+    border-color: #fff !important;
+    background-color: rgb(255 255 255 / 80%) !important;
+    padding: 0.5rem;
     border-radius: 10px;
+    flex: 0 1 6em;
 
     &:hover, &:focus, &:active {
       cursor: unset;
