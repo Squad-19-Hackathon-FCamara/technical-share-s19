@@ -1,29 +1,40 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { OrangeIcon } from '../../assets/icons'
+import { ChatIcon, OrangeIcon } from '../../assets/icons'
 import {
   HeaderContent,
   ChatButton,
   HeaderButtons,
   HeaderContainer,
-  ProfileButton
+  ProfileButton,
+  LogOutButton,
+  HeaderButtonMobile
 } from './styles'
 
 const Header = (props) => {
   return (
-    <HeaderContent>
+    <HeaderContent displayMobile={props.buttons ? "flex" : "none"}>
       <HeaderContainer>
         {OrangeIcon}
       </HeaderContainer>
 
       {
         props.buttons &&
-        <HeaderButtons>
-          <ProfileButton>Perfil</ProfileButton>
-          <Link to="/chat">
-            <ChatButton>Chat</ChatButton>
+        <div>
+          <HeaderButtons>
+            <ProfileButton>Encontrar mentores</ProfileButton>
+            <Link to="/chat">
+              <ChatButton>Mensagens</ChatButton>
+            </Link>
+            <LogOutButton>Sair</LogOutButton>
+          </HeaderButtons>
+
+          <Link to={'/chatlist'}>
+            <HeaderButtonMobile>
+              {ChatIcon}
+            </HeaderButtonMobile>
           </Link>
-        </HeaderButtons>
+        </div>
       }
     </HeaderContent>
   )

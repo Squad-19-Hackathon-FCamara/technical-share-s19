@@ -2,15 +2,19 @@ import { css } from 'styled-components'
 
 export const baseFormContainer = css`
   margin: auto;
-  display: grid;
-  align-items: center;
-  min-height: 100vh;
+
+  @media(max-width: 600px) {
+    display: grid;
+    align-items: center;
+    min-height: 100vh;
+  }
 
   @media (min-width: 600px) {
     padding-left: 30px;
     padding-right: 30px;
     max-width: 603px;
-    min-height: auto;
+    margin-top: 77px;
+    padding-top: 60px;
   }
 `
 

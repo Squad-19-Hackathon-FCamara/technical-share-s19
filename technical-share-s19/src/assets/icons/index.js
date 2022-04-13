@@ -69,3 +69,25 @@ export const SubmitIcon = (
     <path d="M27 1C27 0.447717 26.5523 1.52214e-06 26 -7.94354e-08L17 7.21355e-07C16.4477 3.8418e-07 16 0.447716 16 1C16 1.55228 16.4477 2 17 2L25 2L25 10C25 10.5523 25.4477 11 26 11C26.5523 11 27 10.5523 27 10L27 1ZM1.70711 26.7071L26.7071 1.70711L25.2929 0.292894L0.292893 25.2929L1.70711 26.7071Z" fill="black" />
   </svg>
 )
+
+export const ChatIcon = (
+  <svg width="47" height="46" viewBox="0 0 47 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#filter0_d_352_566)">
+      <rect x="3" y="1" width="40" height="30.6667" rx="3" fill="white" fill-opacity="0.6" />
+      <path d="M7 31.6667H19V33L9 39.6667L7 31.6667Z" fill="white" fill-opacity="0.6" />
+      <path d="M3.12938 8.24528V5.65768C3.12938 3.08532 5.2147 1 7.78706 1H38.9677C41.54 1 43.6253 3.0853 43.6253 5.65767V21.248M43.6253 23.8356V28.1051C43.6253 30.6775 41.54 32.7628 38.9677 32.7628H19.6984C18.4829 32.7628 17.3155 33.238 16.4455 34.0869L10.1454 40.2345L9.72025 40.7219C9.24351 41.2684 8.34387 40.9587 8.30458 40.2345V35.1212C8.30458 33.7321 7.36669 32.5181 6.02255 32.1675C5.56629 32.0485 5.1438 31.8254 4.78822 31.5157L4.57825 31.3328C3.77169 30.6303 3.26057 29.6488 3.14742 28.5852L3 27.1995V10.7035M16.0027 9.47439H37.7385M9.01617 16.0081H37.7385M9.01617 22.6065H37.7385" stroke="black" stroke-linecap="round" />
+    </g>
+    <defs>
+      <filter id="filter0_d_352_566" x="0.5" y="0.5" width="45.625" height="45.0008" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+        <feOffset dy="2" />
+        <feGaussianBlur stdDeviation="1" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_352_566" />
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_352_566" result="shape" />
+      </filter>
+    </defs>
+  </svg>
+)

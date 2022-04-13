@@ -7,7 +7,7 @@ export const Container = styled.div`
   margin: 0;
 
   @media(min-width: 600px) {
-    padding: 1rem;
+    padding: 0.6rem;
   }
 
   :nth-child(2n) {
