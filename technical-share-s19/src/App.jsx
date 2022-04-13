@@ -9,21 +9,23 @@ import Chat from './pages/Chat'
 import AuthContext from './context/authContext'
 
 const App = () => {
-  const { user } = useContext(AuthContext)
+  const { isLoggedIn } = useContext(AuthContext)
   return (
     <Switch>
       <Route exact path="/">
-        {user ? <Home /> : <Login />}
+        {isLoggedIn ? <Home /> : <Login />}
       </Route>
       <Route path="/register">
-        {user ? <Redirect to="/" /> : <Register />}
+        {isLoggedIn ? <Redirect to="/" /> : <Register />}
       </Route>
-      <Route path="/profile/">{user ? <Profile /> : <Redirect to="/" />}</Route>
+      <Route path="/profile/">
+        {isLoggedIn ? <Profile /> : <Redirect to="/" />}
+      </Route>
       <Route exact path="/chat">
         <Chat />
       </Route>
       <Route path="/chat/:mentorId">
-        {user ? <Chat /> : <Redirect to="/" />}
+        {isLoggedIn ? <Chat /> : <Redirect to="/" />}
       </Route>
     </Switch>
   )

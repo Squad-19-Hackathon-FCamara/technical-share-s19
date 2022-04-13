@@ -15,7 +15,7 @@ import {
 } from './styles'
 
 const Home = () => {
-  const { user, users, errorFetchUsers } = useContext(AuthContext)
+  const { user, users, errorFetchUsers, userLogout } = useContext(AuthContext)
   const [resultList, setResultList] = useState([])
   const [resultListVisible, setResultListVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
@@ -100,6 +100,7 @@ const Home = () => {
           {!errorFetchUsers ? userList : errorFetchUsers}
         </CardsCarousel>
       </CardsSection>
+      <button onClick={userLogout}>Sair</button>
     </Layout>
   )
 }

@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react'
 
 const AuthContext = createContext({
   user: null,
+  isLoggedIn: false,
   userLogin: () => {},
   userRegister: () => {},
   users: null,
@@ -12,6 +13,7 @@ const AuthContext = createContext({
 export const AuthContextProvider = props => {
   const getUserLoggedInFromStorage = localStorage.getItem('user')
   const userLoggedIn = JSON.parse(getUserLoggedInFromStorage)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState(userLoggedIn)
   const [users, setUsers] = useState([])
   const [errorFetchUsers, setErrorFetchUsers] = useState(null)
@@ -20,8 +22,11 @@ export const AuthContextProvider = props => {
 
   useEffect(() => {
     const userLoggedIn = localStorage.getItem('user')
-    const userObject = JSON.parse(userLoggedIn)
-    setUser(userObject)
+    if (userLoggedIn) {
+      const userObject = JSON.parse(userLoggedIn)
+      setUser(userObject)
+      setIsLoggedIn(true)
+    }
   }, [])
 
   const userLogin = async userInput => {
@@ -41,6 +46,7 @@ export const AuthContextProvider = props => {
     const user = data.user
     //const token = data.token
     setUser(user)
+    setIsLoggedIn(true)
     localStorage.setItem('user', JSON.stringify(user))
   }
 
@@ -61,7 +67,13 @@ export const AuthContextProvider = props => {
     const user = data.user
     //const token = data.token
     setUser(user)
+    setIsLoggedIn(true)
     localStorage.setItem('user', JSON.stringify(user))
+  }
+
+  const userLogout = () => {
+    localStorage.removeItem('user')
+    setIsLoggedIn(false)
   }
 
   useEffect(() => {
@@ -97,8 +109,10 @@ export const AuthContextProvider = props => {
       value={{
         user: user,
         userLogin: userLogin,
+        userLogout: userLogout,
         userRegister: userRegister,
         users: users,
+        isLoggedIn: isLoggedIn,
         errorFetchUsers: errorFetchUsers,
         errorAuth: errorAuth
       }}
