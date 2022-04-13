@@ -10,7 +10,9 @@ const AuthContext = createContext({
 })
 
 export const AuthContextProvider = props => {
-  const [user, setUser] = useState(null)
+  const getUserLoggedInFromStorage = localStorage.getItem('user')
+  const userLoggedIn = JSON.parse(getUserLoggedInFromStorage)
+  const [user, setUser] = useState(userLoggedIn)
   const [users, setUsers] = useState([])
   const [errorFetchUsers, setErrorFetchUsers] = useState(null)
   const [errorAuth, setErrorAuth] = useState(null)
@@ -19,7 +21,6 @@ export const AuthContextProvider = props => {
   useEffect(() => {
     const userLoggedIn = localStorage.getItem('user')
     const userObject = JSON.parse(userLoggedIn)
-
     setUser(userObject)
   }, [])
 

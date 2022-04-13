@@ -44,7 +44,7 @@ const ChatList = props => {
     <Container>
       <Header />
       <ReturnHome>
-        <Link to="/home">
+        <Link to="/">
           <Icon>{/* {BackIcon}*/}</Icon>Voltar para Home
         </Link>
       </ReturnHome>

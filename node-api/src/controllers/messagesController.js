@@ -36,7 +36,7 @@ async function getAllMessages(req, res) {
       return {
         fromSelf: msg.sender.toString() === from,
         message: msg.message.text,
-        id: msg._id
+        _id: msg._id
       }
     })
 

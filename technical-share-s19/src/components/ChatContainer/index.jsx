@@ -22,7 +22,7 @@ const ChatContainer = props => {
 
   useEffect(() => {
     const activeChat = users.find(user => user.id === mentorId)
-    setCurrentChatName(activeChat.name)
+    setCurrentChatName(activeChat?.name)
 
     async function getMessages() {
       const response = await axios.post(
@@ -76,7 +76,7 @@ const ChatContainer = props => {
   useEffect(() => {
     if (socket.current) {
       socket.current.on('msg-receive', msg => {
-        setArrivalMessage({ fromSelf: false, message: msg })
+        setArrivalMessage({ fromSelf: false, message: msg, _id: msg._id })
       })
     }
   }, [])
