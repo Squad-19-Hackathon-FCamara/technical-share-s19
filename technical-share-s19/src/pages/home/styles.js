@@ -115,12 +115,6 @@ export const SearchMentor = styled.div`
   }
 `
 
-export const SkillSection = styled.section``
-
-
-export const SkillTree = styled.div``
-
-
 export const CardsSection = styled.div`
   margin-bottom: 30px;
   padding-left: 30px;
@@ -133,4 +127,20 @@ export const CardsCarousel = styled.div`
   gap: 0.938rem;
   overflow-x: auto;
   padding: 30px 15px;
+`
+
+export const LogOutMobile = styled.div`
+  text-align: center;
+
+  @media(min-width: 600px) {
+    display: none;
+  }
+
+  button {
+    background-color: unset;
+    border: none;
+    text-decoration: underline;
+    color: #36357E;
+    font-size: 1.075rem;
+  }
 `

@@ -19,7 +19,8 @@ import {
   HeroTitleContainer,
   HeroFeatures,
   HeroFeaturesItem,
-  SectionMentorTitle
+  SectionMentorTitle,
+  LogOutMobile
 } from './styles'
 
 const Home = () => {
@@ -127,7 +128,10 @@ const Home = () => {
           {!errorFetchUsers ? userList : errorFetchUsers}
         </CardsCarousel>
       </CardsSection>
-      <button onClick={userLogout}>Sair</button>
+
+      <LogOutMobile>
+        <button onClick={userLogout}>Sair</button>
+      </LogOutMobile>
     </>
   )
 }
