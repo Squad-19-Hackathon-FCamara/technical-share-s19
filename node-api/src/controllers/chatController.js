@@ -12,8 +12,9 @@ async function createChat(req, res) {
     const { from, to } = req.body
 
     const existingChat = await verifyExistingChat(from, to)
+    const existingChatReverse = await verifyExistingChat(to, from)
 
-    if (existingChat) {
+    if (existingChat || existingChatReverse) {
       return
     }
 

@@ -53,7 +53,9 @@ const ChatList = props => {
       </ChatListHeader>
       <StartedChats>
         {chats?.map(chat => {
-          return <ChatItem key={chat.id} username={chat.title} id={chat.id} />
+          if (chat.id !== user._id) {
+            return <ChatItem key={chat.id} username={chat.title} id={chat.id} />
+          }
         })}
       </StartedChats>
     </Container>

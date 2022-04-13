@@ -15,7 +15,7 @@ import {
 } from './styles'
 
 const Home = () => {
-  const { users, errorFetchUsers } = useContext(AuthContext)
+  const { user, users, errorFetchUsers } = useContext(AuthContext)
   const [resultList, setResultList] = useState([])
   const [resultListVisible, setResultListVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
@@ -35,25 +35,33 @@ const Home = () => {
     setResultList(searchResult)
   }
 
-  const userList = users.map(user => (
-    <Card
-      key={user.id}
-      id={user.id}
-      username={user.name}
-      tags={user.tags}
-      role={user.role}
-    />
-  ))
+  const userList = users.map(userSuggestion => {
+    if (userSuggestion.id !== user._id) {
+      return (
+        <Card
+          key={userSuggestion.id}
+          id={userSuggestion.id}
+          username={userSuggestion.name}
+          tags={userSuggestion.tags}
+          role={userSuggestion.role}
+        />
+      )
+    }
+  })
 
-  const searchResults = resultList.map(user => (
-    <Card
-      key={user.id}
-      id={user.id}
-      username={user.name}
-      tags={user.tags}
-      role={user.role}
-    />
-  ))
+  const searchResults = resultList.map(userResult => {
+    if (userResult.id !== user._id) {
+      return (
+        <Card
+          key={userResult.id}
+          id={userResult.id}
+          username={userResult.name}
+          tags={userResult.tags}
+          role={userResult.role}
+        />
+      )
+    }
+  })
 
   return (
     <Layout>

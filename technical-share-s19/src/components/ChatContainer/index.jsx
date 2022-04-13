@@ -110,7 +110,7 @@ const ChatContainer = props => {
           messages?.map(message => {
             return (
               // {/* verificar se message fromself = true para definir posição da msg na tela */}
-              <p key={message.id} ref={scrollRef}>
+              <p key={message._id} ref={scrollRef}>
                 {message.message}
               </p>
             )
