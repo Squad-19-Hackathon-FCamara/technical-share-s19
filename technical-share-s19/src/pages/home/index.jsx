@@ -1,17 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 import SearchBar from '../../components/SearchBar'
 import AuthContext from '../../context/authContext'
+import Orange from '../../assets/img/OrangeBefore.png'
+import Purple from '../../assets/img/PurpleAfter.png'
+import Mentores from '../../assets/img/Mentores.png'
+import Conhecimento from '../../assets/img/Conhecimento.png'
+import Cresca from '../../assets/img/Cresca.png'
+
 import {
-  Layout,
   Hero,
   HeroTitle,
-  HeroSubtitle,
   CardsSection,
   SectionTitle,
   CardsCarousel,
-  SearchMentor
+  SearchMentor,
+  HeroTitleContainer,
+  HeroFeatures,
+  HeroFeaturesItem,
+  SectionMentorTitle
 } from './styles'
 
 const Home = () => {
@@ -64,16 +72,35 @@ const Home = () => {
   })
 
   return (
-    <Layout>
-      <Header />
-      <Hero>
-        <HeroTitle>A maior comunidade de tech skills do Brasil</HeroTitle>
-        <HeroSubtitle>
-          Aprenda e compartilhe, troque experiências e decole sua carreira.
-        </HeroSubtitle>
+    <>
+      <Header buttons />
+      <Hero backgroundBefore={Orange} backgroundAfter={Purple}>
+        <HeroTitleContainer>
+          <HeroTitle>A maior comunidade de tech skills do Brasil</HeroTitle>
+          <HeroFeatures>
+            <HeroFeaturesItem>
+              <img src={Mentores} alt="Encontre mentores" />
+              <div>
+                <span>Encontre</span><span>mentores</span>
+              </div>
+            </HeroFeaturesItem>
+            <HeroFeaturesItem>
+              <img src={Conhecimento} alt="Compartilhe conhecimento" />
+              <div>
+                <span>Compartilhe</span><span>conhecimento</span>
+              </div>
+            </HeroFeaturesItem>
+            <HeroFeaturesItem>
+              <img src={Cresca} alt="Cresça junto" />
+              <div>
+                <span>Cresça</span><span>junto</span>
+              </div>
+            </HeroFeaturesItem>
+          </HeroFeatures>
+        </HeroTitleContainer>
       </Hero>
       <SearchMentor>
-        <SectionTitle>Pesquise por mentores:</SectionTitle>
+        <SectionTitle>Pesquise por mentores</SectionTitle>
         <SearchBar
           value={inputValue}
           onChange={setInputValue}
@@ -83,7 +110,7 @@ const Home = () => {
 
       {resultListVisible && (
         <CardsSection>
-          <SectionTitle>Resultados da busca:</SectionTitle>
+          <SectionMentorTitle>Resultados da busca:</SectionMentorTitle>
           <CardsCarousel>
             {resultList.length ? (
               searchResults
@@ -95,13 +122,13 @@ const Home = () => {
       )}
 
       <CardsSection>
-        <SectionTitle>Sugestões de mentores para você:</SectionTitle>
+        <SectionMentorTitle>Sugestões de mentores para você:</SectionMentorTitle>
         <CardsCarousel>
           {!errorFetchUsers ? userList : errorFetchUsers}
         </CardsCarousel>
       </CardsSection>
       <button onClick={userLogout}>Sair</button>
-    </Layout>
+    </>
   )
 }
 

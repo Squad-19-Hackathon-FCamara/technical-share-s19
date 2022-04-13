@@ -1,32 +1,41 @@
 import styled from 'styled-components'
+import { baseBtnSubmit, baseInputStyles } from '../../assets/styles'
 
 const Form = styled.form`
   display: flex;
   border: none;
   border-radius: 15px;
-  background-color: #c4c4c4;
   justify-content: flex-end;
   align-items: center;
 `
 
 const Input = styled.input`
-  border: none;
-  outline-style: none;
-  border-radius: 15px;
-  width: 100%;
-  height: 2.5rem;
-  padding: 0.313rem 0.625rem;
-  background-color: inherit;
-  flex: 1 1 auto;
-  /* margin-top: 1.563rem; */
+  ${baseInputStyles}
+  border-radius: 15px 0 0 15px;
+
+  @media(max-width: 900px) {
+    padding: 19px 15px;
+  }
+
+  @media(min-width: 900px) {
+    padding: 23px;
+  }
 `
 
 const Button = styled.button`
-  padding: 5px;
-  border-radius: 10px;
-  border: none;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
+  ${baseBtnSubmit}
+  border-radius: 0 15px 15px 0;
+  border-color: #5251A2;
+  border-left: 0;
+
+  @media(max-width: 900px) {
+    margin: 0;
+    padding: 10px;
+  }
+
+  @media(min-width: 900px) {
+    padding: 15px 30px;
+  }
 `
 
 export { Form, Input, Button }

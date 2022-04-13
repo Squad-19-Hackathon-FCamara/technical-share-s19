@@ -1,13 +1,23 @@
 import { useContext, useState } from 'react'
+import { OrangeIconMobile, PlusIcon, SubmitIcon } from '../../assets/icons'
+import Header from '../../components/Header'
 import Tag from '../../components/Tag'
 import AuthContext from '../../context/authContext'
 import {
+  FormContainer,
+  FormRegisterHeader,
+  InputContainer,
   FormBtn,
-  FormLogin,
-  HeaderTitle,
+  FormRegister,
   InputLabel,
-  InputLogin,
-  SkillsBtn
+  InputRegister,
+  SkillsBtn,
+  InputRegisterTags,
+  InputRegisterGrid,
+  FormBtnSvg,
+  InputTagsGrid,
+  FormError,
+  FormRegisterHeaderMobile,
 } from './styles'
 
 const Register = () => {
@@ -18,7 +28,7 @@ const Register = () => {
   const [tag, setTag] = useState('')
   const [tagList, setTagList] = useState([])
 
-  const { userRegister, error } = useContext(AuthContext)
+  const { userRegister, error } = useContext(AuthContext);
 
   let userInput = {
     email: email,
@@ -34,12 +44,10 @@ const Register = () => {
   }
 
   const addTagToList = e => {
-    e.preventDefault()
-    if (!tag) {
-      return
-    }
-    setTagList(oldArray => [...oldArray, tag])
-    setTag('')
+    e.preventDefault();
+    if (!tag) return;
+    setTagList(oldArray => [...oldArray, tag]);
+    setTag('');
   }
 
   const renderUserTags = tagList.map(tagItem => (
@@ -48,81 +56,90 @@ const Register = () => {
 
   return (
     <>
-      <HeaderTitle>Technical Share</HeaderTitle>
+      <Header />
+      <FormContainer>
+        <FormRegister onSubmit={submitUserInput}>
+          <FormRegisterHeader>Cadastro</FormRegisterHeader>
+          <FormRegisterHeaderMobile>{OrangeIconMobile}</FormRegisterHeaderMobile>
+          <InputContainer>
+            <InputRegister
+              placeholder="Seu email da empresa"
+              id="email"
+              name="email"
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            ></InputRegister>
+          </InputContainer>
 
-      <p>Vamos te cadastrar para começar essa jornada de aprendizado!</p>
+          <InputContainer>
+            <InputRegister
+              placeholder="Sua senha ultrasecreta"
+              id="senha"
+              name="senha"
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            ></InputRegister>
+          </InputContainer>
 
-      <FormLogin onSubmit={submitUserInput}>
-        <div>
-          <InputLogin
-            placeholder="Seu email da empresa"
-            id="email"
-            name="email"
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-          ></InputLogin>
-        </div>
-
-        <div>
-          <InputLogin
-            placeholder="Sua senha ultrasecreta"
-            id="senha"
-            name="senha"
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-          ></InputLogin>
-        </div>
-
-        <div>
-          <InputLogin
-            placeholder="Seu nome (como te chamam na firma?)"
-            id="nome"
-            name="nome"
-            type="text"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            required
-          ></InputLogin>
-        </div>
-
-        <div>
-          <InputLogin
-            placeholder="Qual seu cargo atual?"
-            id="cargo"
-            name="cargo"
-            type="text"
-            value={role}
-            onChange={e => setRole(e.target.value)}
-            required
-          ></InputLogin>
-        </div>
-
-        <div>
-          <InputLabel htmlFor="tags">
-            Adicione suas skills e seguimentos de experiência:
-          </InputLabel>
-          <div>
-            <InputLogin
-              placeholder="HTML/CSS, Javascript, Fintech, Food services..."
-              id="tags"
-              name="tags"
+          <InputContainer>
+            <InputRegister
+              placeholder="Seu nome (como te chamam na firma?)"
+              id="nome"
+              name="nome"
               type="text"
-              value={tag}
-              onChange={e => setTag(e.target.value)}
-            ></InputLogin>
-            <SkillsBtn onClick={addTagToList}>Adicionar</SkillsBtn>
-          </div>
-        </div>
-        <FormBtn type="submit">Cadastrar</FormBtn>
-      </FormLogin>
+              value={name}
+              onChange={e => setName(e.target.value)}
+              required
+            ></InputRegister>
+          </InputContainer>
 
-      <div>{renderUserTags}</div>
+          <InputContainer>
+            <InputRegister
+              placeholder="Qual seu cargo atual?"
+              id="cargo"
+              name="cargo"
+              type="text"
+              value={role}
+              onChange={e => setRole(e.target.value)}
+              required
+            ></InputRegister>
+          </InputContainer>
 
-      {error && <p>{error}</p>}
+          <InputContainer>
+            <InputLabel htmlFor="tags">Adicione suas skills e segmentos de experiência:</InputLabel>
+            <InputRegisterGrid>
+              <InputRegisterTags
+                placeholder="HTML/CSS, Javascript, Fintech, Food services..."
+                id="tags"
+                name="tags"
+                type="text"
+                value={tag}
+                onChange={e => setTag(e.target.value)}
+              ></InputRegisterTags>
+              <SkillsBtn onClick={addTagToList}>{PlusIcon}</SkillsBtn>
+            </InputRegisterGrid>
+          </InputContainer>
+
+          <InputTagsGrid>
+            {
+              renderUserTags
+            }
+          </InputTagsGrid>
+
+          {
+            error && <FormError>{error}</FormError>
+          }
+
+          <FormBtn type="submit">
+            <span>Cadastrar</span>
+            <FormBtnSvg>{SubmitIcon}</FormBtnSvg>
+          </FormBtn>
+        </FormRegister>
+      </FormContainer>
     </>
   )
 }

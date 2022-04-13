@@ -1,41 +1,136 @@
 import styled from 'styled-components'
 
-export const Layout = styled.div`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 2.813rem 1.25rem;
-  background-color: #e5e5e5;
-`
 export const Hero = styled.div`
-  padding-top: 2.813rem;
+  text-align: center;
+  background-image: url(${props => props.backgroundBefore}), url(${props => props.backgroundAfter});
+  background-repeat: no-repeat;
+  background-position-y: -43px, 60px;
+  background-position-x: -20px, right;
+  padding-bottom: 80px;
+  margin-top: 80px;
+  padding-top: 60px;
+
+  @media(max-width: 900px) {
+    background-size: 113px, 100px;
+  }
+
+  @media(min-width: 900px) {
+    background-position-y: -50px, 120px;
+    background-position-x: left, right;
+  }
 `
+
+export const HeroTitleContainer = styled.div`
+  max-width: 926px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: auto;
+  margin-right: auto;
+`
+
 export const HeroTitle = styled.h2`
-  font-size: 1.563rem;
+  font-size: 1.5rem;
   font-weight: 600;
+  color: #36357E;
+  letter-spacing: 0.01em;
+  text-align: left;
+
+  @media(min-width: 600px) {
+    text-align: center;
+  }
+
+  @media(min-width: 900px) {
+    font-size: 3.75rem;
+    line-height: 70px;
+  }
 `
-export const HeroSubtitle = styled.h3`
-  font-size: 0.938rem;
-  font-weight: 400;
-  margin: 0.625rem 0 2.188rem;
+
+export const HeroFeatures = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+  margin-top: 60px;
+
+  @media (min-width: 900px) {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 40px;
+  }
 `
+
+export const HeroFeaturesItem = styled.div`
+  display: grid;
+  grid-gap: 15px;
+  justify-items: center;
+
+  span {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 20px;
+    
+    @media(max-width: 900px) {
+      font-weight: 600;
+    }
+
+    @media(min-width: 900px) {
+      font-size: 1.875rem;
+      line-height: 30px;
+    }
+  }
+`
+
 export const SectionTitle = styled.h3`
   font-size: 1rem;
-  margin-bottom: 0.938rem;
+  margin-bottom: 1.238rem;
+  font-weight: 400;
+  text-align: left;
+
+  @media(min-width: 900px) {
+    font-size: 3rem;
+    color: #36357E;
+    text-align: center;
+  }
 `
+
+export const SectionMentorTitle = styled.h3`
+  font-size: 1rem;
+  font-weight: 400;
+
+  @media(min-width: 900px) {
+    font-size: 1.875rem;
+  }
+`
+
 export const SearchMentor = styled.div`
-  margin-bottom: 2.188rem;
+  margin-bottom: 3.588rem;
+  max-width: 717px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  @media(min-width: 900px) {
+    margin-top: 60px;
+  }
 `
+
 export const SkillSection = styled.section``
+
 
 export const SkillTree = styled.div``
 
+
 export const CardsSection = styled.div`
   margin-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 `
+
 export const CardsCarousel = styled.div`
   display: flex;
   flex-direction: row;
   gap: 0.938rem;
-  overflow-x: scroll;
+  overflow-x: auto;
+  padding: 30px 15px;
 `
