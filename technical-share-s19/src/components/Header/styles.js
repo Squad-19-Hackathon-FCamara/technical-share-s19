@@ -4,7 +4,7 @@ const HeaderContent = styled.header`
   display: none;
   
   @media (min-width: 600px) {
-    padding: 30px;
+    padding: 20px;
     box-shadow: 1px 3px 3px rgb(45 45 45 / 31%);
     margin-bottom: 60px;
     display: flex;
