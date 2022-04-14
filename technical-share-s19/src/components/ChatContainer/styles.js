@@ -5,22 +5,35 @@ export const Container = styled.main`
   flex-direction: column;
   position: relative;
   flex: 1 1 auto;
+  
+  @media(max-width: 800px) {
+    display: ${props => props.chatSelected ? "block" : "none"};
+  }
 `
 
-export const ReturnHome = styled.span`
-  display: flex;
-  /* height: 1.875rem; */
-  align-items: center;
-  margin: 2.188rem 0 2.813rem 0;
-`
+export const ReturnHome = styled.div`
+  margin: 2rem 0.5rem 1rem;
 
-export const Icon = styled.i`
-  height: 2rem;
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: fit-content;
+    gap: 5px;
+  }
+
+  span {
+    font-size: 1.2rem;
+  }
 `
 
 export const ChatHeader = styled.div`
   padding: 30px;
   border-bottom: 2px solid rgb(130 121 121 / 23%);
+
+  @media(max-width: 800px) {
+    padding: 15px;
+  }
 
   h2 {
     font-weight: 400;
@@ -36,6 +49,11 @@ export const ChatBox = styled.div`
   padding: 30px;
   height: 73.8vh;
   overflow-y: auto;
+
+  @media(max-width: 800px) {
+    height: 67.8vh;
+    padding-bottom: 40px;
+  }
 `
 
 export const ChatBoxMessage = styled.p`
@@ -49,6 +67,11 @@ export const ChatBoxMessage = styled.p`
   margin-right: ${props => props.fromSelf ? 'unset' : 'auto'};
   width: fit-content;
   line-height: 1.4;
+`
+
+export const ChatBoxInformation = styled.div`
+  display: flex;
+  justify-content: center;
 `
 
 export const MessageForm = styled.form`

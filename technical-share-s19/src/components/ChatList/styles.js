@@ -30,10 +30,14 @@ export const ChatListContainer = styled.aside`
   box-shadow: 1px 0px 7px rgb(0 0 0 / 15%);
   flex: 0 0 22em;
   overflow: hidden;
+
+  @media(max-width: 800px) {
+    flex: 1;
+    display: ${props => props.chatSelected ? 'none' : 'block'};
+  }
 `
 
 export const StartedChats = styled.div`
   display: flex;
   flex-direction: column;
 `
-export const Icon = styled.i``

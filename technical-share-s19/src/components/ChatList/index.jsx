@@ -7,13 +7,12 @@ import ChatItem from '../ChatItem'
 import {
   ChatListContainer,
   ChatListHeader,
-  Icon,
   ReturnHome,
   StartedChats
 } from './styles'
 
 const ChatList = props => {
-  const { user, users } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [chats, setChats] = useState([])
 
   useEffect(() => {
@@ -41,11 +40,10 @@ const ChatList = props => {
   }, [])
 
   return (
-    <ChatListContainer>
+    <ChatListContainer chatSelected={props.mentorId}>
       <ReturnHome>
         <Link to="/">
-          <Icon>{BackIcon}</Icon>
-          <span>Voltar para Home</span>
+          <i>{BackIcon}</i><span>Voltar para Home</span>
         </Link>
       </ReturnHome>
       <ChatListHeader>
