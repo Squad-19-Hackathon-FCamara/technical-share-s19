@@ -29,7 +29,6 @@ const Home = () => {
   const [resultListVisible, setResultListVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
 
-  console.log(process.env)
   function filterUsers(e) {
     e.preventDefault()
     const searchResult = users.filter(
