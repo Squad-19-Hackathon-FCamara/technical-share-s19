@@ -8,7 +8,7 @@ const {
 } = require('../services/userServices')
 
 function generateToken(params = {}) {
-  return jwt.sign(params, authConfig.secret, {
+  return jwt.sign(params, process.env.SECRET_KEY, {
     expiresIn: 86400
   })
 }
@@ -38,7 +38,6 @@ async function listUser(req, res) {
 // Registra um novo usuario
 async function registerUser(req, res) {
   try {
-
     const { name, email, role, tags, password, chats } = req.body
 
     const user = {
@@ -48,7 +47,6 @@ async function registerUser(req, res) {
       tags: tags,
       password: password,
       chats: chats
-
     }
 
     const verifyUser = await verifyExistingUserByEmail(user.email)
@@ -75,6 +73,4 @@ async function loginUser(req, res) {
   }
 }
 
-
 module.exports = { listUsers, listUser, registerUser, loginUser }
-
