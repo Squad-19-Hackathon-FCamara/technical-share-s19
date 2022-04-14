@@ -4,7 +4,18 @@ import { Link } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { BackIcon, SubmitMessageIcon } from '../../assets/icons'
 import AuthContext from '../../context/authContext'
-import { ChatBox, ChatBoxInformation, ChatBoxMessage, ChatHeader, Container, Icon, InputMessage, MessageForm, ReturnHome, SubmitMessage } from './styles'
+import {
+  ChatBox,
+  ChatBoxInformation,
+  ChatBoxMessage,
+  ChatHeader,
+  Container,
+  Icon,
+  InputMessage,
+  MessageForm,
+  ReturnHome,
+  SubmitMessage
+} from './styles'
 
 const ChatContainer = props => {
   const { users } = useContext(AuthContext)
@@ -68,7 +79,7 @@ const ChatContainer = props => {
         `${process.env.REACT_APP_BACK_URL}/chat/create`,
         {
           from: props.user._id,
-          to: mentorId
+          to: props.mentorId
         }
       )
     } catch (error) {
@@ -96,7 +107,8 @@ const ChatContainer = props => {
     <Container chatSelected={props.mentorId}>
       <ReturnHome>
         <Link to="/">
-          <i>{BackIcon}</i><span>Voltar para Home</span>
+          <i>{BackIcon}</i>
+          <span>Voltar para Home</span>
         </Link>
       </ReturnHome>
       <ChatHeader>
@@ -131,20 +143,17 @@ const ChatContainer = props => {
           </ChatBoxInformation>
         )}
       </ChatBox>
-      {
-        props.mentorId &&
-        (
-          <MessageForm onSubmit={handleSendMessage}>
-            <InputMessage
-              value={message}
-              onChange={e => setMessage(e.target.value)}
-              type="text"
-              placeholder='O início de uma grande conversa..'
-            />
-            <SubmitMessage>{SubmitMessageIcon}</SubmitMessage>
-          </MessageForm>
-        )
-      }
+      {props.mentorId && (
+        <MessageForm onSubmit={handleSendMessage}>
+          <InputMessage
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+            type="text"
+            placeholder="O início de uma grande conversa.."
+          />
+          <SubmitMessage>{SubmitMessageIcon}</SubmitMessage>
+        </MessageForm>
+      )}
     </Container>
   )
 }
