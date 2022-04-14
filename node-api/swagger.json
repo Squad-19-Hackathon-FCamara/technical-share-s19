@@ -94,6 +94,38 @@
                 }
             }
             
+        },
+        "/users/{_id}": {
+            "get": {
+                "summary": "Rota de Buscar por Usuario",
+                "description": "Essa rota é responsavel fazer a busca de um usuario especifico no banco de dados",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "name": "_id",
+                        "in": "path",
+                        "description": "Busca por id do Usuario",
+                        "required": true
+                    }
+                ],
+
+                "responses": {
+                    "400": { 
+                        "description": "Erro ao carregar usuário!"
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object",
+                                    "$ref":"#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
         }
     },
     
