@@ -22,7 +22,7 @@ const App = () => {
         {isLoggedIn ? <Profile /> : <Redirect to="/" />}
       </Route>
       <Route exact path="/chat">
-        <Chat />
+        {isLoggedIn ? <Chat /> : <Redirect to="/" />}
       </Route>
       <Route path="/chat/:mentorId">
         {isLoggedIn ? <Chat /> : <Redirect to="/" />}

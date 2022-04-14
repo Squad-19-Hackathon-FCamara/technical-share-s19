@@ -6,6 +6,7 @@ export const Container = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-transform: capitalize;
   
   a {
     text-decoration: none;

@@ -33,11 +33,11 @@ const Header = (props) => {
             <Link to="/chat">
               <ChatButton selectedPage={props.selectedPage}>Mensagens</ChatButton>
             </Link>
-            <LogOutButton>Sair</LogOutButton>
+            <LogOutButton onClick={userLogout}>Sair</LogOutButton>
           </HeaderButtons>
 
           <Link to={'/chat'}>
-            <HeaderButtonMobile onClick={userLogout}>
+            <HeaderButtonMobile>
               {ChatIcon}
             </HeaderButtonMobile>
           </Link>
