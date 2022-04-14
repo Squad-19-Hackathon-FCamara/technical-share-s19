@@ -52,13 +52,14 @@ export const UserTags = styled.div`
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
-
+  justify-content: center;
+  
   > div, > div:nth-child(2) {
     border-color: #fff !important;
     background-color: rgb(255 255 255 / 80%) !important;
     padding: 0.3rem;
     border-radius: 10px;
-    flex: 0 1 4.1em;
+    flex: 0 1 3em;
 
     &:hover, &:focus, &:active {
       cursor: unset;
