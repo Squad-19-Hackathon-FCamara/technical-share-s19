@@ -6,7 +6,6 @@ const app = express()
 const socket = require('socket.io')
 require('dotenv').config()
 
-console.log(process.env.MONGO_URL)
 //Initialize cors
 app.use(cors())
 

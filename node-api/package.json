@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js"
+    "start": "nodemon ./src/index.js",
+    "publishToHeroku": "cd ../ && git subtree push --prefix node-api technical-share-s19-backend main || true"
   },
   "keywords": [],
   "author": "",
