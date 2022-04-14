@@ -51,8 +51,53 @@
                     }
                 }
             }
+            
+        },
+        "/users/login": {
+            "post": {
+                "summary": "Rota de Login",
+                "description": "Essa rota é responsavel por autenticar e logar o usuario",
+                "tags": ["User"],
+                "security":[{"bearerAuth": [] }] ,
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "User": {
+                                    "value": {                                     
+                                        "email": "felipe@teste.com",
+                                        "password": "12345678"                                       
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": { 
+                        "description": "Usuário não encontrado!"
+                    },
+                    "200": {
+                        "description": "Usuário logado com sucesso!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object",
+                                    "$ref":"#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
         }
     },
+    
+    
     "components": {
         "schemas":{
             "User": {
@@ -81,6 +126,9 @@
                         "type": "array"
                           },
                         "required": true
+                      },
+                      "_id": {
+                          "type": "string"
                       }
                      
                 }
@@ -88,7 +136,7 @@
         },
         "securitySchemes": {
             "bearerAuth": {
-                "type": "htt[",
+                "type": "http",
                 "scheme": "bearer",
                 "bearerFormat": "JWT"
             }
