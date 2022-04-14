@@ -1,10 +1,10 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { io } from 'socket.io-client'
-import { SubmitMessageIcon } from '../../assets/icons'
+import { BackIcon, SubmitMessageIcon } from '../../assets/icons'
 import AuthContext from '../../context/authContext'
-import { ChatBox, ChatBoxMessage, ChatHeader, Container, InputMessage, MessageForm, SubmitMessage } from './styles'
+import { ChatBox, ChatBoxInformation, ChatBoxMessage, ChatHeader, Container, Icon, InputMessage, MessageForm, ReturnHome, SubmitMessage } from './styles'
 
 const ChatContainer = props => {
   const { users } = useContext(AuthContext)
@@ -13,7 +13,6 @@ const ChatContainer = props => {
   const [messages, setMessages] = useState([])
   const [arrivalMessage, setArrivalMessage] = useState(null)
   const scrollRef = useRef()
-  const { mentorId } = useParams()
   const socket = useRef()
 
   useEffect(() => {
@@ -22,7 +21,7 @@ const ChatContainer = props => {
   }, [])
 
   useEffect(() => {
-    const activeChat = users.find(user => user.id === mentorId)
+    const activeChat = users.find(user => user.id === props.mentorId)
     setCurrentChatName(activeChat?.name)
 
     async function getMessages() {
@@ -30,13 +29,13 @@ const ChatContainer = props => {
         'http://localhost:3003/message/getmessages',
         {
           from: props.user._id,
-          to: mentorId
+          to: props.mentorId
         }
       )
       setMessages(response.data)
     }
     getMessages()
-  }, [mentorId])
+  }, [props.mentorId])
 
   const handleSendMessage = e => {
     e.preventDefault()
@@ -48,13 +47,13 @@ const ChatContainer = props => {
   const submitMessage = async message => {
     socket.current.emit('send-msg', {
       from: props.user._id,
-      to: mentorId,
+      to: props.mentorId,
       message: message
     })
 
     await axios.post('http://localhost:3003/message/addmessage', {
       from: props.user._id,
-      to: mentorId,
+      to: props.mentorId,
       message: message
     })
 
@@ -67,7 +66,7 @@ const ChatContainer = props => {
     try {
       const response = await axios.post('http://localhost:3003/chat/create', {
         from: props.user._id,
-        to: mentorId
+        to: props.mentorId
       })
     } catch (error) {
       console.log('chat já existe :)')
@@ -91,10 +90,15 @@ const ChatContainer = props => {
   }, [messages])
 
   return (
-    <Container>
+    <Container chatSelected={props.mentorId}>
+      <ReturnHome>
+        <Link to="/">
+          <i>{BackIcon}</i><span>Voltar para Home</span>
+        </Link>
+      </ReturnHome>
       <ChatHeader>
         <h2>
-          {mentorId ? (
+          {props.mentorId ? (
             currentChatName
           ) : (
             <p>
@@ -105,7 +109,7 @@ const ChatContainer = props => {
         </h2>
       </ChatHeader>
       <ChatBox>
-        {mentorId ? (
+        {props.mentorId ? (
           messages?.map(message => {
             return (
               // {/* verificar se message fromself = true para definir posição da msg na tela */}
@@ -115,26 +119,25 @@ const ChatContainer = props => {
             )
           })
         ) : (
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          >
+          <ChatBoxInformation>
             Selecione uma conversa ao lado esquerdo para iniciar
-          </div>
+          </ChatBoxInformation>
         )}
       </ChatBox>
-      <MessageForm onSubmit={handleSendMessage}>
-        <InputMessage
-          value={message}
-          onChange={e => setMessage(e.target.value)}
-          type="text"
-          placeholder='O início de uma grande conversa..'
-        />
-        <SubmitMessage>{SubmitMessageIcon}</SubmitMessage>
-      </MessageForm>
+      {
+        props.mentorId &&
+        (
+          <MessageForm onSubmit={handleSendMessage}>
+            <InputMessage
+              value={message}
+              onChange={e => setMessage(e.target.value)}
+              type="text"
+              placeholder='O início de uma grande conversa..'
+            />
+            <SubmitMessage>{SubmitMessageIcon}</SubmitMessage>
+          </MessageForm>
+        )
+      }
     </Container>
   )
 }
