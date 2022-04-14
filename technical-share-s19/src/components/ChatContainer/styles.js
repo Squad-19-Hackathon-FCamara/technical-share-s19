@@ -14,6 +14,10 @@ export const Container = styled.main`
 export const ReturnHome = styled.div`
   margin: 2rem 0.5rem 1rem;
 
+  @media(min-width: 800px) {
+    display: none;
+  }
+
   a {
     display: flex;
     align-items: center;
