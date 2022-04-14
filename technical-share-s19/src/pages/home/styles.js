@@ -131,6 +131,7 @@ export const CardsCarousel = styled.div`
 
 export const LogOutMobile = styled.div`
   text-align: center;
+  padding-bottom: 30px;
 
   @media(min-width: 600px) {
     display: none;
