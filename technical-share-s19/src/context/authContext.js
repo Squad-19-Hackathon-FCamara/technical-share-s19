@@ -30,11 +30,14 @@ export const AuthContextProvider = props => {
   }, [])
 
   const userLogin = async userInput => {
-    const response = await fetch('http://localhost:3003/users/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userInput)
-    })
+    const response = await fetch(
+      `${process.env.REACT_APP_BACK_URL}/users/login`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userInput)
+      }
+    )
 
     const data = await response.json()
 
@@ -51,11 +54,14 @@ export const AuthContextProvider = props => {
   }
 
   const userRegister = async userInput => {
-    const response = await fetch('http://localhost:3003/users/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userInput)
-    })
+    const response = await fetch(
+      `${process.env.REACT_APP_BACK_URL}/users/register`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userInput)
+      }
+    )
 
     const data = await response.json()
 
@@ -78,7 +84,7 @@ export const AuthContextProvider = props => {
 
   useEffect(() => {
     const getUsers = async () => {
-      const response = await fetch('http://localhost:3003/users/')
+      const response = await fetch(`${process.env.REACT_APP_BACK_URL}/users/`)
       if (!response.ok)
         throw new Error('Erro ao consultar usuários cadastrados!')
       const data = await response.json()

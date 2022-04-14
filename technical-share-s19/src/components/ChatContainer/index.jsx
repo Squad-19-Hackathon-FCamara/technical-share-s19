@@ -4,7 +4,15 @@ import { useParams } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { SubmitMessageIcon } from '../../assets/icons'
 import AuthContext from '../../context/authContext'
-import { ChatBox, ChatBoxMessage, ChatHeader, Container, InputMessage, MessageForm, SubmitMessage } from './styles'
+import {
+  ChatBox,
+  ChatBoxMessage,
+  ChatHeader,
+  Container,
+  InputMessage,
+  MessageForm,
+  SubmitMessage
+} from './styles'
 
 const ChatContainer = props => {
   const { users } = useContext(AuthContext)
@@ -17,7 +25,7 @@ const ChatContainer = props => {
   const socket = useRef()
 
   useEffect(() => {
-    socket.current = io('http://localhost:3003')
+    socket.current = io(process.env.REACT_APP_BACK_URL)
     socket.current.emit('add-user', props.user._id)
   }, [])
 
@@ -27,7 +35,7 @@ const ChatContainer = props => {
 
     async function getMessages() {
       const response = await axios.post(
-        'http://localhost:3003/message/getmessages',
+        `${process.env.REACT_APP_BACK_URL}/message/getmessages`,
         {
           from: props.user._id,
           to: mentorId
@@ -52,7 +60,7 @@ const ChatContainer = props => {
       message: message
     })
 
-    await axios.post('http://localhost:3003/message/addmessage', {
+    await axios.post(`${process.env.REACT_APP_BACK_URL}/message/addmessage`, {
       from: props.user._id,
       to: mentorId,
       message: message
@@ -65,10 +73,13 @@ const ChatContainer = props => {
 
   const createChat = async () => {
     try {
-      const response = await axios.post('http://localhost:3003/chat/create', {
-        from: props.user._id,
-        to: mentorId
-      })
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACK_URL}/chat/create`,
+        {
+          from: props.user._id,
+          to: mentorId
+        }
+      )
     } catch (error) {
       console.log('chat já existe :)')
     }
@@ -109,7 +120,11 @@ const ChatContainer = props => {
           messages?.map(message => {
             return (
               // {/* verificar se message fromself = true para definir posição da msg na tela */}
-              <ChatBoxMessage key={message._id} ref={scrollRef} fromSelf={message.fromSelf}>
+              <ChatBoxMessage
+                key={message._id}
+                ref={scrollRef}
+                fromSelf={message.fromSelf}
+              >
                 {message.message}
               </ChatBoxMessage>
             )
@@ -131,7 +146,7 @@ const ChatContainer = props => {
           value={message}
           onChange={e => setMessage(e.target.value)}
           type="text"
-          placeholder='O início de uma grande conversa..'
+          placeholder="O início de uma grande conversa.."
         />
         <SubmitMessage>{SubmitMessageIcon}</SubmitMessage>
       </MessageForm>

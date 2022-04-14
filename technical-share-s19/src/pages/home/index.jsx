@@ -29,6 +29,7 @@ const Home = () => {
   const [resultListVisible, setResultListVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
 
+  console.log(process.env)
   function filterUsers(e) {
     e.preventDefault()
     const searchResult = users.filter(
@@ -82,19 +83,22 @@ const Home = () => {
             <HeroFeaturesItem>
               <img src={Mentores} alt="Encontre mentores" />
               <div>
-                <span>Encontre</span><span>mentores</span>
+                <span>Encontre</span>
+                <span>mentores</span>
               </div>
             </HeroFeaturesItem>
             <HeroFeaturesItem>
               <img src={Conhecimento} alt="Compartilhe conhecimento" />
               <div>
-                <span>Compartilhe</span><span>conhecimento</span>
+                <span>Compartilhe</span>
+                <span>conhecimento</span>
               </div>
             </HeroFeaturesItem>
             <HeroFeaturesItem>
               <img src={Cresca} alt="Cresça junto" />
               <div>
-                <span>Cresça</span><span>junto</span>
+                <span>Cresça</span>
+                <span>junto</span>
               </div>
             </HeroFeaturesItem>
           </HeroFeatures>
@@ -123,7 +127,9 @@ const Home = () => {
       )}
 
       <CardsSection>
-        <SectionMentorTitle>Sugestões de mentores para você:</SectionMentorTitle>
+        <SectionMentorTitle>
+          Sugestões de mentores para você:
+        </SectionMentorTitle>
         <CardsCarousel>
           {!errorFetchUsers ? userList : errorFetchUsers}
         </CardsCarousel>

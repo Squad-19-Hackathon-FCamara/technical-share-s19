@@ -19,7 +19,7 @@ const ChatList = props => {
   useEffect(() => {
     const getChatsByUserId = async () => {
       const response = await axios.post(
-        'http://localhost:3003/chat/getallchats',
+        `${process.env.REACT_APP_BACK_URL}/chat/getallchats`,
         {
           userId: user._id
         }
@@ -44,7 +44,8 @@ const ChatList = props => {
     <ChatListContainer>
       <ReturnHome>
         <Link to="/">
-          <Icon>{BackIcon}</Icon><span>Voltar para Home</span>
+          <Icon>{BackIcon}</Icon>
+          <span>Voltar para Home</span>
         </Link>
       </ReturnHome>
       <ChatListHeader>
