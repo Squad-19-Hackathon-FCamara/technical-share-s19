@@ -74,7 +74,7 @@ const Home = () => {
 
   return (
     <>
-      <Header buttons />
+      <Header buttons selectedPage={'home'} />
       <Hero backgroundBefore={Orange} backgroundAfter={Purple}>
         <HeroTitleContainer>
           <HeroTitle>A maior comunidade de tech skills do Brasil</HeroTitle>

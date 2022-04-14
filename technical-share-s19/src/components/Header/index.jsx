@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ChatIcon, OrangeIcon } from '../../assets/icons'
+import AuthContext from '../../context/authContext'
 import {
   HeaderContent,
   ChatButton,
@@ -12,6 +13,8 @@ import {
 } from './styles'
 
 const Header = (props) => {
+  const { userLogout } = useContext(AuthContext)
+
   return (
     <HeaderContent displayMobile={props.buttons ? "flex" : "none"}>
       <HeaderContainer>
@@ -22,15 +25,19 @@ const Header = (props) => {
         props.buttons &&
         <div>
           <HeaderButtons>
-            <ProfileButton>Encontrar mentores</ProfileButton>
+            <Link to="/">
+              <ProfileButton selectedPage={props.selectedPage}>
+                Encontrar mentores
+              </ProfileButton>
+            </Link>
             <Link to="/chat">
-              <ChatButton>Mensagens</ChatButton>
+              <ChatButton selectedPage={props.selectedPage}>Mensagens</ChatButton>
             </Link>
             <LogOutButton>Sair</LogOutButton>
           </HeaderButtons>
 
-          <Link to={'/chatlist'}>
-            <HeaderButtonMobile>
+          <Link to={'/chat'}>
+            <HeaderButtonMobile onClick={userLogout}>
               {ChatIcon}
             </HeaderButtonMobile>
           </Link>

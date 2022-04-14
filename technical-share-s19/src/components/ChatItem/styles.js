@@ -1,15 +1,19 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  display: flex;
-  padding: 0.5rem;
-  background-color: #e5e5e5;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #5251A2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+  a {
+    text-decoration: none;
+    font-size: 1.25rem;
+    color: #000;
+  }
 `
-
-
-export const Username = styled.div``
 
 export const ProfileIcon = styled.div`
   height: 300px;
 `
-

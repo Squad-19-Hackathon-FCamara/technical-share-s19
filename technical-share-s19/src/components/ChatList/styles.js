@@ -1,31 +1,39 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 2.813rem 1.25rem;
-  background-color: #e5e5e5;
-`
+export const ReturnHome = styled.div`
+  margin: 2rem 0.5rem;
 
-export const ReturnHome = styled.span`
-  display: flex;
-  /* height: 1.875rem; */
-  align-items: center;
-  margin: 2.188rem 0 2.813rem 0;
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: fit-content;
+    gap: 5px;
+  }
+
+  span {
+    font-size: 1.2rem;
+  }
 `
 
 export const ChatListHeader = styled.div`
-  display: flex;
-  justify-content: flex-start;
+  padding: 15px;
+  border-bottom: 2px solid #5251A2;
+
+  h2 {
+    font-weight: 500;
+  }
+`
+
+export const ChatListContainer = styled.aside`
+  border-right: 2px solid #5251A2;
+  box-shadow: 1px 0px 7px rgb(0 0 0 / 15%);
+  flex: 0 0 22em;
+  overflow: hidden;
 `
 
 export const StartedChats = styled.div`
   display: flex;
   flex-direction: column;
 `
-export const Icon = styled.i`
-
-  height: 2rem;
-`
-
+export const Icon = styled.i``

@@ -2,8 +2,9 @@ import axios from 'axios'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { io } from 'socket.io-client'
+import { SubmitMessageIcon } from '../../assets/icons'
 import AuthContext from '../../context/authContext'
-import { ChatBox, ChatHeader, Container, MessageForm } from './styles'
+import { ChatBox, ChatBoxMessage, ChatHeader, Container, InputMessage, MessageForm, SubmitMessage } from './styles'
 
 const ChatContainer = props => {
   const { users } = useContext(AuthContext)
@@ -102,17 +103,15 @@ const ChatContainer = props => {
             </p>
           )}
         </h2>
-
-        <button>agendar</button>
       </ChatHeader>
       <ChatBox>
         {mentorId ? (
           messages?.map(message => {
             return (
               // {/* verificar se message fromself = true para definir posição da msg na tela */}
-              <p key={message._id} ref={scrollRef}>
+              <ChatBoxMessage key={message._id} ref={scrollRef} fromSelf={message.fromSelf}>
                 {message.message}
-              </p>
+              </ChatBoxMessage>
             )
           })
         ) : (
@@ -123,17 +122,18 @@ const ChatContainer = props => {
               alignItems: 'center'
             }}
           >
-            Selecione uma conversa para iniciar
+            Selecione uma conversa ao lado esquerdo para iniciar
           </div>
         )}
       </ChatBox>
       <MessageForm onSubmit={handleSendMessage}>
-        <input
+        <InputMessage
           value={message}
           onChange={e => setMessage(e.target.value)}
           type="text"
+          placeholder='O início de uma grande conversa..'
         />
-        <button>enviar</button>
+        <SubmitMessage>{SubmitMessageIcon}</SubmitMessage>
       </MessageForm>
     </Container>
   )

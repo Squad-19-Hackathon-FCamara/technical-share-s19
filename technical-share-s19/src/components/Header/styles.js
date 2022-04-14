@@ -5,7 +5,8 @@ export const HeaderContent = styled.header`
   padding: 20px;
   justify-content: space-between;
   position: absolute;
-  width: 100%;
+  left: 0;
+  right: 0;
   top: 0;
   background-color: #fff;
   
@@ -37,7 +38,8 @@ export const HeaderButtonMobile = styled.span`
 
 export const ChatButton = styled.button`
   border: none;
-  font-weight: 400;
+  font-weight: ${props => props.selectedPage === 'chat' ? '700' : '400'};
+  color: ${props => props.selectedPage === 'chat' ? '#36357E' : '#000'};
   background-color: unset;
   font-size: 1.25rem;
   line-height: 30px;
@@ -50,8 +52,8 @@ export const ChatButton = styled.button`
 
 export const ProfileButton = styled.button`
   border: none;
-  color: #36357E;
-  font-weight: 700;
+  font-weight: ${props => props.selectedPage === 'home' ? '700' : '400'};
+  color: ${props => props.selectedPage === 'home' ? '#36357E' : '#000'};
   background-color: unset;
   font-size: 1.25rem;
   line-height: 30px;

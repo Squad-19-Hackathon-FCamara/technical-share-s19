@@ -1,12 +1,12 @@
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { BackIcon } from '../../assets/icons'
 import AuthContext from '../../context/authContext'
 import ChatItem from '../ChatItem'
-import Header from '../Header'
 import {
+  ChatListContainer,
   ChatListHeader,
-  Container,
   Icon,
   ReturnHome,
   StartedChats
@@ -41,15 +41,14 @@ const ChatList = props => {
   }, [])
 
   return (
-    <Container>
-      <Header />
+    <ChatListContainer>
       <ReturnHome>
         <Link to="/">
-          <Icon>{/* {BackIcon}*/}</Icon>Voltar para Home
+          <Icon>{BackIcon}</Icon><span>Voltar para Home</span>
         </Link>
       </ReturnHome>
       <ChatListHeader>
-        <h2>Mensagens</h2>
+        <h2>Todas as mensagens</h2>
       </ChatListHeader>
       <StartedChats>
         {chats?.map(chat => {
@@ -58,7 +57,7 @@ const ChatList = props => {
           }
         })}
       </StartedChats>
-    </Container>
+    </ChatListContainer>
   )
 }
 
