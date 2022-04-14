@@ -24,7 +24,6 @@ const UserSchema = new mongoose.Schema({
     type: Array,
     required: true
   }
-  //redes sociais?
 })
 
 UserSchema.pre('save', async function (next) {

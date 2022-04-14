@@ -1,52 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 import SearchBar from '../../components/SearchBar'
+import AuthContext from '../../context/authContext'
+import Orange from '../../assets/img/OrangeBefore.png'
+import Purple from '../../assets/img/PurpleAfter.png'
+import Mentores from '../../assets/img/Mentores.png'
+import Conhecimento from '../../assets/img/Conhecimento.png'
+import Cresca from '../../assets/img/Cresca.png'
+
 import {
-  Layout,
   Hero,
   HeroTitle,
-  HeroSubtitle,
   CardsSection,
   SectionTitle,
   CardsCarousel,
-  SearchMentor
+  SearchMentor,
+  HeroTitleContainer,
+  HeroFeatures,
+  HeroFeaturesItem,
+  SectionMentorTitle,
+  LogOutMobile
 } from './styles'
 
 const Home = () => {
-  const [users, setUsers] = useState([])
+  const { user, users, errorFetchUsers, userLogout } = useContext(AuthContext)
   const [resultList, setResultList] = useState([])
   const [resultListVisible, setResultListVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const response = await fetch('http://localhost:3003/users/')
-      if (!response.ok)
-        throw new Error('Erro ao consultar usuários cadastrados!')
-      const data = await response.json()
-      const usersList = data.users
-
-      let loadedUsers = []
-
-      for (const key in usersList) {
-        loadedUsers.push({
-          key: key,
-          id: usersList[key]._id,
-          name: usersList[key].name,
-          email: usersList[key].email,
-          role: usersList[key].role,
-          tags: usersList[key].tags
-        })
-      }
-      setUsers(loadedUsers)
-    }
-
-    getUsers().catch(error => {
-      setError(error.message)
-    })
-  }, [])
 
   function filterUsers(e) {
     e.preventDefault()
@@ -63,37 +44,67 @@ const Home = () => {
     setResultList(searchResult)
   }
 
-  const userList = users.map(user => (
-    <Card
-      key={user.id}
-      id={user.id}
-      username={user.name}
-      tags={user.tags}
-      role={user.role}
-    />
-  ))
+  const userList = users.map(userSuggestion => {
+    if (userSuggestion.id !== user._id) {
+      return (
+        <Card
+          key={userSuggestion.id}
+          id={userSuggestion.id}
+          username={userSuggestion.name}
+          tags={userSuggestion.tags}
+          role={userSuggestion.role}
+        />
+      )
+    }
+  })
 
-  const searchResults = resultList.map(user => (
-    <Card
-      key={user.id}
-      id={user.id}
-      username={user.name}
-      tags={user.tags}
-      role={user.role}
-    />
-  ))
+  const searchResults = resultList.map(userResult => {
+    if (userResult.id !== user._id) {
+      return (
+        <Card
+          key={userResult.id}
+          id={userResult.id}
+          username={userResult.name}
+          tags={userResult.tags}
+          role={userResult.role}
+        />
+      )
+    }
+  })
 
   return (
-    <Layout>
-      <Header />
-      <Hero>
-        <HeroTitle>A maior comunidade de tech skills do Brasil</HeroTitle>
-        <HeroSubtitle>
-          Aprenda e compartilhe, troque experiências e decole sua carreira.
-        </HeroSubtitle>
+    <>
+      <Header buttons selectedPage={'home'} />
+      <Hero backgroundBefore={Orange} backgroundAfter={Purple}>
+        <HeroTitleContainer>
+          <HeroTitle>A maior comunidade de tech skills do Brasil</HeroTitle>
+          <HeroFeatures>
+            <HeroFeaturesItem>
+              <img src={Mentores} alt="Encontre mentores" />
+              <div>
+                <span>Encontre</span>
+                <span>mentores</span>
+              </div>
+            </HeroFeaturesItem>
+            <HeroFeaturesItem>
+              <img src={Conhecimento} alt="Compartilhe conhecimento" />
+              <div>
+                <span>Compartilhe</span>
+                <span>conhecimento</span>
+              </div>
+            </HeroFeaturesItem>
+            <HeroFeaturesItem>
+              <img src={Cresca} alt="Cresça junto" />
+              <div>
+                <span>Cresça</span>
+                <span>junto</span>
+              </div>
+            </HeroFeaturesItem>
+          </HeroFeatures>
+        </HeroTitleContainer>
       </Hero>
       <SearchMentor>
-        <SectionTitle>Pesquise por mentores:</SectionTitle>
+        <SectionTitle>Pesquise por mentores</SectionTitle>
         <SearchBar
           value={inputValue}
           onChange={setInputValue}
@@ -103,7 +114,7 @@ const Home = () => {
 
       {resultListVisible && (
         <CardsSection>
-          <SectionTitle>Resultados da busca:</SectionTitle>
+          <SectionMentorTitle>Resultados da busca:</SectionMentorTitle>
           <CardsCarousel>
             {resultList.length ? (
               searchResults
@@ -115,10 +126,18 @@ const Home = () => {
       )}
 
       <CardsSection>
-        <SectionTitle>Sugestões de mentores para você:</SectionTitle>
-        <CardsCarousel>{!error ? userList : error}</CardsCarousel>
+        <SectionMentorTitle>
+          Sugestões de mentores para você:
+        </SectionMentorTitle>
+        <CardsCarousel>
+          {!errorFetchUsers ? userList : errorFetchUsers}
+        </CardsCarousel>
       </CardsSection>
-    </Layout>
+
+      <LogOutMobile>
+        <button onClick={userLogout}>Sair</button>
+      </LogOutMobile>
+    </>
   )
 }
 

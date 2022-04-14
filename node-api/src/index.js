@@ -4,7 +4,9 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const socket = require('socket.io')
+require('dotenv').config()
 
+console.log(process.env.MONGO_URL)
 //Initialize cors
 app.use(cors())
 
@@ -19,7 +21,7 @@ const server = app.listen(3003, () => console.log('Server Running ' + 3003))
 
 const io = socket(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: process.env.FRONT_URL,
     credentials: true
   }
 })

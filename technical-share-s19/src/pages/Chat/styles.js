@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  height: 100vh;
+export const ChatPageContainer = styled.section`
+  margin-top: 76px;
+  min-height: 91.9vh;
   display: flex;
-  flex-direction: column;
-  padding: 2.813rem 1.25rem;
-  background-color: #e5e5e5;
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 export const ReturnHome = styled.span`
@@ -14,6 +14,7 @@ export const ReturnHome = styled.span`
   align-items: center;
   margin: 2.188rem 0 2.813rem 0;
 `
+
 export const Icon = styled.i`
   height: 2rem;
 `
@@ -24,7 +25,7 @@ export const ChatHeader = styled.div`
 `
 
 export const ChatBox = styled.div`
-  height: 80vh;
+  height: 81.2vh;
 `
 
 export const MessageForm = styled.form`

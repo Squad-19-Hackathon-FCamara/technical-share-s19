@@ -35,7 +35,8 @@ async function getAllMessages(req, res) {
     const projectMessages = messages.map(msg => {
       return {
         fromSelf: msg.sender.toString() === from,
-        message: msg.message.text
+        message: msg.message.text,
+        _id: msg._id
       }
     })
 

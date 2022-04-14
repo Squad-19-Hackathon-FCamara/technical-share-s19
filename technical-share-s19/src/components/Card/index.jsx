@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ChatButton } from '../Header/styles'
+import { ChatIcon } from '../../assets/icons'
 import Tag from '../Tag'
 import {
   Container,
@@ -8,7 +8,8 @@ import {
   UserInfo,
   Username,
   UserPhoto,
-  UserTags
+  UserTags,
+  ChatButton
 } from './styles'
 
 const Card = props => {
@@ -24,14 +25,16 @@ const Card = props => {
       {/* <UserPhoto src={props.photo} /> FOTO DINÂMICA CADASTRADA PELA PESSOA */}
       <UserInfo>
         <Username>{props.username}</Username>
-        <div>
-          <UserRole> {props.role}</UserRole>
-          <Link to={'/chat/' + props.id}>
-            <ChatButton>Chat</ChatButton>
-          </Link>
-        </div>
+        <UserRole> {props.role}</UserRole>
         <UserTags>{renderUserTags}</UserTags>
       </UserInfo>
+      <Link to={'/chat/' + props.id}>
+        <ChatButton>
+          <span>
+            {ChatIcon}
+          </span>
+        </ChatButton>
+      </Link>
     </Container>
   )
 }
