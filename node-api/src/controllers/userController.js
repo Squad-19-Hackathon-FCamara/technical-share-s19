@@ -64,7 +64,7 @@ async function registerUser(req, res) {
 async function loginUser(req, res) {
   try {
     const { email, password } = req.body
-
+    
     const user = await validateUser(email)
     const token = await validatePassword(email, password)
     return res.status(200).json({ user: user, token: token })

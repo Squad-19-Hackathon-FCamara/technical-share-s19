@@ -1,6 +1,8 @@
 //Initial config
 
 const express = require('express')
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocument = require('../swagger.json')
 const cors = require('cors')
 const app = express()
 const socket = require('socket.io')
@@ -9,6 +11,8 @@ require('dotenv').config()
 //Initialize cors
 app.use(cors())
 
+// Swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 // Read Json
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))

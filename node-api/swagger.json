@@ -1,0 +1,98 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "API Technical Share",
+        "description": "Essa API foi desenvolvida com o objetivo de: cadastrar e logar um usuario, e permetir que ele encontre e inicie conversas com mentores para terem orietacao e tirar duvidas",
+        "contact": {
+            "email": "squad19laranja@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/users/register": {
+            "post": {
+                "summary": "Rota de Registro",
+                "description": "Essa rota é responsavel por registrar o usuario",
+                "tags": ["User"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "User": {
+                                    "value": {
+                                        "name": "Felipe Junior",
+                                        "email": "felipe@teste.com",
+                                        "password": "12345678",
+                                        "role": "Dev Fullstack - Senior",
+                                        "skills": ["CSS", "HTML", "JavaScript"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": { 
+                        "description": "Usuário já existe!"
+                    },
+                    "201": {
+                        "description": "Usuário criado com sucesso!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type":"object",
+                                    "$ref":"#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas":{
+            "User": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "required": true
+                      },
+                      "email": {
+                        "type": "string",
+                        "unique": true,
+                        "required": true,
+                        "lowercase": true
+                      },
+                      "password": {
+                        "type": "string",
+                        "required": true
+                      },
+                      "role": {
+                        "type": "string",
+                        "required": true
+                      },
+                      "tags": {
+                          "items": {
+                        "type": "array"
+                          },
+                        "required": true
+                      }
+                     
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "htt[",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+
+}
