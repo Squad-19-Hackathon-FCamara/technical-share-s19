@@ -35,11 +35,22 @@ export const InputLabel = styled.label`
 export const InputRegister = styled.input`
   ${baseInputStyles}
 `
-export const selectRegister = styled.select`
- display: block;
+
+export const SelectRegister = styled.select`
+  width: 100%;
+  border: 1px solid #5251A2;
+  padding: 15px;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  border-radius: 10px;
+  background-color: #fff;
+
+  @media(min-width: 600px) {
+    padding: 20px 15px;
+  }
 `
-export const optionRegister = styled.option`
- display: block;
+
+export const OptionRegister = styled.option`
+  font-size: 1rem;
 `
 
 export const InputRegisterGrid = styled.div`

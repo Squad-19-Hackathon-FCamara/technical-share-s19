@@ -11,8 +11,6 @@ import {
   FormRegister,
   InputLabel,
   InputRegister,
-  selectRegister,
-  optionRegister,
   SkillsBtn,
   InputRegisterTags,
   InputRegisterGrid,
@@ -20,6 +18,8 @@ import {
   InputTagsGrid,
   FormError,
   FormRegisterHeaderMobile,
+  SelectRegister,
+  OptionRegister,
 } from './styles'
 
 const Register = () => {
@@ -115,7 +115,7 @@ const Register = () => {
           </InputContainer>
 
           <InputContainer>
-            <select
+            <SelectRegister
               placeholder="Qual seu nível de experiência?"
               id="nivel"
               name="nivel"
@@ -123,11 +123,12 @@ const Register = () => {
               onChange={e => setLevel(e.target.value)}
               required
             >
-              <option value="trainee">Trainee</option>
-              <option value="júnior">Júnior</option>
-              <option value="sênior">Sênior</option>
-              <option value="pleno">Pleno</option>
-            </select>
+              <OptionRegister value="" disabled>Seleciona sua senioridade:</OptionRegister>
+              <OptionRegister value="trainee">Trainee</OptionRegister>
+              <OptionRegister value="júnior">Júnior</OptionRegister>
+              <OptionRegister value="sênior">Sênior</OptionRegister>
+              <OptionRegister value="pleno">Pleno</OptionRegister>
+            </SelectRegister>
           </InputContainer>
           <InputContainer>
             <InputLabel htmlFor="tags">Adicione suas skills e segmentos de experiência:</InputLabel>

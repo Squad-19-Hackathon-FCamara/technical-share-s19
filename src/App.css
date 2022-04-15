@@ -19,3 +19,12 @@ a:hover, a:focus, a:active {
 a:active {
   text-decoration: none;
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAYAAAB24g05AAAABmJLR0QA/wD/AP+gvaeTAAAAiklEQVQokZXPMQrCQBSE4c+AYK2H0nRW3skj2Jkmd7HRgyhYWBgR1CYLYcnuxoHXPOafeQ/maHFDLa8KB9yxC8sW3366TEiFZuB9YwPXwTIVEsNh9npzlwlJwWcsQ8Maz8jwwhbHEfiCVfzj2CWfUnOssUuKzVNDJsGpkL/goBoPnGR+LmmBWc7wAyepSmewuaNwAAAAAElFTkSuQmCC');
+  background-repeat: no-repeat;
+  background-position: 96% 50%;
+  background-size: 15px;
+}
