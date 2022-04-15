@@ -46,6 +46,7 @@ export const UserInfo = styled.div`
 export const UserRole = styled.span`
   font-size: 1rem;
   font-weight: 500;
+  text-transform: capitalize;
 `
 
 export const UserTags = styled.div`

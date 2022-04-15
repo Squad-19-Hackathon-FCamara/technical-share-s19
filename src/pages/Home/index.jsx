@@ -35,6 +35,7 @@ const Home = () => {
       user =>
         user.name.toLowerCase().includes(inputValue.toLowerCase()) ||
         user.role.toLowerCase().includes(inputValue.toLowerCase()) ||
+        user.level.toLowerCase().includes(inputValue.toLowerCase()) ||
         user.tags.filter(item =>
           item.toLowerCase().includes(inputValue.toLowerCase())
         ).length > 0
@@ -53,6 +54,7 @@ const Home = () => {
           username={userSuggestion.name}
           tags={userSuggestion.tags}
           role={userSuggestion.role}
+          level={userSuggestion.level}
         />
       )
     }
@@ -67,6 +69,7 @@ const Home = () => {
           username={userResult.name}
           tags={userResult.tags}
           role={userResult.role}
+          level={userResult.level}
         />
       )
     }

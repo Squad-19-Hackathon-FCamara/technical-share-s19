@@ -25,7 +25,7 @@ const Card = props => {
       {/* <UserPhoto src={props.photo} /> FOTO DINÂMICA CADASTRADA PELA PESSOA */}
       <UserInfo>
         <Username>{props.username}</Username>
-        <UserRole> {props.role}</UserRole>
+        <UserRole> {props.role} - {props.level} </UserRole>
         <UserTags>{renderUserTags}</UserTags>
       </UserInfo>
       <Link to={'/chat/' + props.id}>
