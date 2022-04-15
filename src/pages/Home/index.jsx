@@ -78,6 +78,7 @@ const Home = () => {
       <Hero backgroundBefore={Orange} backgroundAfter={Purple}>
         <HeroTitleContainer>
           <HeroTitle>A maior comunidade de tech skills do Brasil</HeroTitle>
+          <HeroTitle>Trilhando e transformando nossas histórias</HeroTitle>
           <HeroFeatures>
             <HeroFeaturesItem>
               <img src={Mentores} alt="Encontre mentores" />

@@ -47,7 +47,7 @@ const ChatList = props => {
         </Link>
       </ReturnHome>
       <ChatListHeader>
-        <h2>Todas as mensagens</h2>
+        <h2>Todas as conversas</h2>
       </ChatListHeader>
       <StartedChats>
         {chats?.map(chat => {

@@ -40,9 +40,19 @@ export const HeroTitle = styled.h2`
   color: #36357E;
   letter-spacing: 0.01em;
 
+  @media(max-width: 900px) {
+    &:nth-of-type(1) {
+      display: none;
+    }
+  }
+
   @media(min-width: 900px) {
     font-size: 3.75rem;
     line-height: 70px;
+
+    &:nth-of-type(2) {
+      display: none;
+    }
   }
 `
 

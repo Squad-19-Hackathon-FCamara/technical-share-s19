@@ -106,9 +106,9 @@ const ChatContainer = props => {
   return (
     <Container chatSelected={props.mentorId}>
       <ReturnHome>
-        <Link to="/">
+        <Link to="/chat">
           <i>{BackIcon}</i>
-          <span>Voltar para Home</span>
+          <span>Voltar para conversas</span>
         </Link>
       </ReturnHome>
       <ChatHeader>
