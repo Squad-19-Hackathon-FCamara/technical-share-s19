@@ -36,43 +36,25 @@ export const HeaderButtonMobile = styled.span`
   }
 `
 
-export const ChatButton = styled.button`
-  border: none;
+export const ChatButton = styled.span`
   font-weight: ${props => props.selectedPage === 'chat' ? '700' : '400'};
   color: ${props => props.selectedPage === 'chat' ? '#36357E' : '#000'};
   background-color: unset;
   font-size: 1.25rem;
   line-height: 30px;
-
-  &:hover, &:focus, &:active {
-    cursor: pointer;
-    text-decoration: underline;
-  }
 `
 
-export const ProfileButton = styled.button`
-  border: none;
+export const ProfileButton = styled.span`
   font-weight: ${props => props.selectedPage === 'home' ? '700' : '400'};
   color: ${props => props.selectedPage === 'home' ? '#36357E' : '#000'};
   background-color: unset;
   font-size: 1.25rem;
   line-height: 30px;
-
-  &:hover, &:focus, &:active {
-    cursor: pointer;
-    text-decoration: underline;
-  }
 `
 
-export const LogOutButton = styled.button`
-  border: none;
+export const LogOutButton = styled.span`
   font-weight: 400;
   background-color: unset;
   font-size: 1.25rem;
   line-height: 30px;
-
-  &:hover, &:focus, &:active {
-    cursor: pointer;
-    text-decoration: underline;
-  }
 `
