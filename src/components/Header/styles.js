@@ -52,9 +52,15 @@ export const ProfileButton = styled.span`
   line-height: 30px;
 `
 
-export const LogOutButton = styled.span`
+export const LogOutButton = styled.button`
   font-weight: 400;
   background-color: unset;
+  border: none;
   font-size: 1.25rem;
   line-height: 30px;
+
+  &:hover, &:focus, &:active {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `
