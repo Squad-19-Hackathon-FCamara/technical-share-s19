@@ -35,6 +35,12 @@ export const InputLabel = styled.label`
 export const InputRegister = styled.input`
   ${baseInputStyles}
 `
+export const selectRegister = styled.select`
+ display: block;
+`
+export const optionRegister = styled.option`
+ display: block;
+`
 
 export const InputRegisterGrid = styled.div`
   display: grid;

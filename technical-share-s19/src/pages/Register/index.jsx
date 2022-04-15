@@ -11,6 +11,8 @@ import {
   FormRegister,
   InputLabel,
   InputRegister,
+  selectRegister,
+  optionRegister,
   SkillsBtn,
   InputRegisterTags,
   InputRegisterGrid,
@@ -27,6 +29,8 @@ const Register = () => {
   const [role, setRole] = useState('')
   const [tag, setTag] = useState('')
   const [tagList, setTagList] = useState([])
+  const [level, setLevel] = useState('')
+  
 
   const { userRegister, error } = useContext(AuthContext);
 
@@ -35,7 +39,8 @@ const Register = () => {
     password: password,
     name: name,
     role: role,
-    tags: tagList
+    tags: tagList,
+    level: level
   }
 
   const submitUserInput = e => {
@@ -110,6 +115,21 @@ const Register = () => {
           </InputContainer>
 
           <InputContainer>
+            <select
+              placeholder="Qual seu nível de experiência?"
+              id="nivel"
+              name="nivel"
+              value={level}
+              onChange={e => setLevel(e.target.value)}
+              required
+            >
+              <option value="trainee">Trainee</option>
+              <option value="júnior">Júnior</option>
+              <option value="sênior">Sênior</option>
+              <option value="pleno">Pleno</option>
+            </select>
+          </InputContainer>
+          <InputContainer>
             <InputLabel htmlFor="tags">Adicione suas skills e segmentos de experiência:</InputLabel>
             <InputRegisterGrid>
               <InputRegisterTags
@@ -143,5 +163,6 @@ const Register = () => {
     </>
   )
 }
+console.log(Register);
 
 export default Register
