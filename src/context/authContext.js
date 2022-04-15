@@ -99,6 +99,7 @@ export const AuthContextProvider = props => {
           name: usersList[key].name,
           email: usersList[key].email,
           role: usersList[key].role,
+          level: usersList[key].level,
           tags: usersList[key].tags
         })
       }

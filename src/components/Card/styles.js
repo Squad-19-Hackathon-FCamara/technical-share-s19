@@ -30,6 +30,10 @@ export const Username = styled.h3`
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 30px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const UserInfo = styled.div`
@@ -46,6 +50,10 @@ export const UserInfo = styled.div`
 export const UserRole = styled.span`
   font-size: 1rem;
   font-weight: 500;
+  text-transform: capitalize;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const UserTags = styled.div`
@@ -67,9 +75,7 @@ export const UserTags = styled.div`
   }
 `
 
-export const ChatButton = styled.button`
-  background-color: transparent;
-  border: none;
+export const ChatButton = styled.span`
   position: absolute;
   top: 0;
   right: 0;
@@ -77,7 +83,6 @@ export const ChatButton = styled.button`
   z-index: 9;
 
   &:hover, &:focus, &:active {
-    cursor: pointer;
     box-shadow: 0 0px 2px 0 rgb(0 0 0 / 40%);
   }
 `

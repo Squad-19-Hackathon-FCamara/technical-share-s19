@@ -5,9 +5,9 @@ import SearchBar from '../../components/SearchBar'
 import AuthContext from '../../context/authContext'
 import Orange from '../../assets/img/OrangeBefore.png'
 import Purple from '../../assets/img/PurpleAfter.png'
-import Mentores from '../../assets/img/Mentores.png'
-import Conhecimento from '../../assets/img/Conhecimento.png'
-import Cresca from '../../assets/img/Cresca.png'
+import Mentores from '../../assets/img/learning.png'
+import Conhecimento from '../../assets/img/network.png'
+import Cresca from '../../assets/img/goal.png'
 
 import {
   Hero,
@@ -35,6 +35,7 @@ const Home = () => {
       user =>
         user.name.toLowerCase().includes(inputValue.toLowerCase()) ||
         user.role.toLowerCase().includes(inputValue.toLowerCase()) ||
+        user.level.toLowerCase().includes(inputValue.toLowerCase()) ||
         user.tags.filter(item =>
           item.toLowerCase().includes(inputValue.toLowerCase())
         ).length > 0
@@ -53,6 +54,7 @@ const Home = () => {
           username={userSuggestion.name}
           tags={userSuggestion.tags}
           role={userSuggestion.role}
+          level={userSuggestion.level}
         />
       )
     }
@@ -67,6 +69,7 @@ const Home = () => {
           username={userResult.name}
           tags={userResult.tags}
           role={userResult.role}
+          level={userResult.level}
         />
       )
     }
@@ -78,6 +81,7 @@ const Home = () => {
       <Hero backgroundBefore={Orange} backgroundAfter={Purple}>
         <HeroTitleContainer>
           <HeroTitle>A maior comunidade de tech skills do Brasil</HeroTitle>
+          <HeroTitle>Trilhando e transformando nossas histórias</HeroTitle>
           <HeroFeatures>
             <HeroFeaturesItem>
               <img src={Mentores} alt="Encontre mentores" />
