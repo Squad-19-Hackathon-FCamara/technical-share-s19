@@ -15,3 +15,7 @@ a:hover, a:focus, a:active {
   cursor: pointer;
   text-decoration: underline;
 }
+
+a:active {
+  text-decoration: none;
+}
