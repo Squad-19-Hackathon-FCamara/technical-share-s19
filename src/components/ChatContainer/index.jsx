@@ -100,7 +100,7 @@ const ChatContainer = props => {
   }, [arrivalMessage])
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+    scrollRef.current?.scrollIntoView()
   }, [messages])
 
   return (
