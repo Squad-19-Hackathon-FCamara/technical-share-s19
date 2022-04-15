@@ -150,6 +150,7 @@ const ChatContainer = props => {
             onChange={e => setMessage(e.target.value)}
             type="text"
             placeholder="O início de uma grande conversa.."
+            required
           />
           <SubmitMessage>{SubmitMessageIcon}</SubmitMessage>
         </MessageForm>
