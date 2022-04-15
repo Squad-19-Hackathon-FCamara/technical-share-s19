@@ -127,6 +127,24 @@ export const CardsCarousel = styled.div`
   gap: 0.938rem;
   overflow-x: auto;
   padding: 30px 15px;
+
+  @media(min-width: 800px) {
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    } 
+  }
 `
 
 export const LogOutMobile = styled.div`
