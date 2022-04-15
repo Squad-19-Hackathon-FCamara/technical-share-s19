@@ -4,18 +4,24 @@ export const Hero = styled.div`
   text-align: center;
   background-image: url(${props => props.backgroundBefore}), url(${props => props.backgroundAfter});
   background-repeat: no-repeat;
-  background-position-y: -43px, 60px;
-  background-position-x: -20px, right;
-  padding-bottom: 80px;
+  background-position-y: -38px, 109px;
+  background-position-x: -13px, right;
+  padding-bottom: 123px;
   margin-top: 80px;
   padding-top: 60px;
 
   @media(max-width: 900px) {
-    background-size: 113px, 100px;
+    background-size: 122px, 120px;
   }
 
+  @media(max-width: 600px) {
+    background-size: 101px,100px;
+    background-position-y: -21px,140px;
+    background-position-x: -12px,right;
+  }
+  
   @media(min-width: 900px) {
-    background-position-y: -50px, 120px;
+    background-position-y: -50px,169px;
     background-position-x: left, right;
   }
 `
@@ -33,11 +39,6 @@ export const HeroTitle = styled.h2`
   font-weight: 600;
   color: #36357E;
   letter-spacing: 0.01em;
-  text-align: left;
-
-  @media(min-width: 600px) {
-    text-align: center;
-  }
 
   @media(min-width: 900px) {
     font-size: 3.75rem;
@@ -51,6 +52,10 @@ export const HeroFeatures = styled.div`
   grid-gap: 30px;
   margin-top: 60px;
 
+  @media (max-width: 600px) {
+    grid-gap: 0;
+  }
+
   @media (min-width: 900px) {
     margin-left: 50px;
     margin-right: 50px;
@@ -62,6 +67,14 @@ export const HeroFeaturesItem = styled.div`
   display: grid;
   grid-gap: 15px;
   justify-items: center;
+
+  img {
+    width: 4rem;
+
+    @media (max-width: 600px) {
+      width: 2rem;
+    }
+  }
 
   span {
     display: block;
