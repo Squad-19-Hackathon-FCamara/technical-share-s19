@@ -30,6 +30,10 @@ export const Username = styled.h3`
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 30px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const UserInfo = styled.div`
@@ -47,6 +51,9 @@ export const UserRole = styled.span`
   font-size: 1rem;
   font-weight: 500;
   text-transform: capitalize;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const UserTags = styled.div`
