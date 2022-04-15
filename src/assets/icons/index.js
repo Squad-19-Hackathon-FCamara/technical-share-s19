@@ -71,7 +71,7 @@ export const SubmitIcon = (
 )
 
 export const ChatIcon = (
-  <svg width="47" height="46" viewBox="0 0 47 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="30.47" viewBox="0 0 47 46" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g filter="url(#filter0_d_352_566)">
       <rect x="3" y="1" width="40" height="30.6667" rx="3" fill="white" fillOpacity="0.6" />
       <path d="M7 31.6667H19V33L9 39.6667L7 31.6667Z" fill="white" fillOpacity="0.6" />

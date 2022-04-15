@@ -58,6 +58,24 @@ export const ChatBox = styled.div`
     height: 67.8vh;
     padding-bottom: 40px;
   }
+
+  @media(min-width: 800px) {
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    } 
+  }
 `
 
 export const ChatBoxMessage = styled.p`

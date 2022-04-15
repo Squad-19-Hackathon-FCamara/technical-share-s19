@@ -4,18 +4,24 @@ export const Hero = styled.div`
   text-align: center;
   background-image: url(${props => props.backgroundBefore}), url(${props => props.backgroundAfter});
   background-repeat: no-repeat;
-  background-position-y: -43px, 60px;
-  background-position-x: -20px, right;
-  padding-bottom: 80px;
+  background-position-y: -38px, 109px;
+  background-position-x: -13px, right;
+  padding-bottom: 123px;
   margin-top: 80px;
   padding-top: 60px;
 
   @media(max-width: 900px) {
-    background-size: 113px, 100px;
+    background-size: 122px, 120px;
   }
 
+  @media(max-width: 600px) {
+    background-size: 101px,100px;
+    background-position-y: -21px,140px;
+    background-position-x: -12px,right;
+  }
+  
   @media(min-width: 900px) {
-    background-position-y: -50px, 120px;
+    background-position-y: -50px,169px;
     background-position-x: left, right;
   }
 `
@@ -33,15 +39,20 @@ export const HeroTitle = styled.h2`
   font-weight: 600;
   color: #36357E;
   letter-spacing: 0.01em;
-  text-align: left;
 
-  @media(min-width: 600px) {
-    text-align: center;
+  @media(max-width: 900px) {
+    &:nth-of-type(1) {
+      display: none;
+    }
   }
 
   @media(min-width: 900px) {
     font-size: 3.75rem;
     line-height: 70px;
+
+    &:nth-of-type(2) {
+      display: none;
+    }
   }
 `
 
@@ -50,6 +61,10 @@ export const HeroFeatures = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
   margin-top: 60px;
+
+  @media (max-width: 600px) {
+    grid-gap: 0;
+  }
 
   @media (min-width: 900px) {
     margin-left: 50px;
@@ -62,6 +77,14 @@ export const HeroFeaturesItem = styled.div`
   display: grid;
   grid-gap: 15px;
   justify-items: center;
+
+  img {
+    width: 4rem;
+
+    @media (max-width: 600px) {
+      width: 2rem;
+    }
+  }
 
   span {
     display: block;
@@ -127,6 +150,24 @@ export const CardsCarousel = styled.div`
   gap: 0.938rem;
   overflow-x: auto;
   padding: 30px 15px;
+
+  @media(min-width: 800px) {
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    } 
+  }
 `
 
 export const LogOutMobile = styled.div`

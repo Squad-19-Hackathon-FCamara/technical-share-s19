@@ -5,9 +5,9 @@ import SearchBar from '../../components/SearchBar'
 import AuthContext from '../../context/authContext'
 import Orange from '../../assets/img/OrangeBefore.png'
 import Purple from '../../assets/img/PurpleAfter.png'
-import Mentores from '../../assets/img/Mentores.png'
-import Conhecimento from '../../assets/img/Conhecimento.png'
-import Cresca from '../../assets/img/Cresca.png'
+import Mentores from '../../assets/img/learning.png'
+import Conhecimento from '../../assets/img/network.png'
+import Cresca from '../../assets/img/goal.png'
 
 import {
   Hero,
@@ -78,6 +78,7 @@ const Home = () => {
       <Hero backgroundBefore={Orange} backgroundAfter={Purple}>
         <HeroTitleContainer>
           <HeroTitle>A maior comunidade de tech skills do Brasil</HeroTitle>
+          <HeroTitle>Trilhando e transformando nossas histórias</HeroTitle>
           <HeroFeatures>
             <HeroFeaturesItem>
               <img src={Mentores} alt="Encontre mentores" />

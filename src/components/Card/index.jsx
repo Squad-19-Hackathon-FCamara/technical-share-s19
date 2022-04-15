@@ -30,9 +30,7 @@ const Card = props => {
       </UserInfo>
       <Link to={'/chat/' + props.id}>
         <ChatButton>
-          <span>
-            {ChatIcon}
-          </span>
+          {ChatIcon}
         </ChatButton>
       </Link>
     </Container>

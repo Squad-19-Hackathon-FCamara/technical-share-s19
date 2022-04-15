@@ -100,15 +100,15 @@ const ChatContainer = props => {
   }, [arrivalMessage])
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
+    scrollRef.current?.scrollIntoView()
   }, [messages])
 
   return (
     <Container chatSelected={props.mentorId}>
       <ReturnHome>
-        <Link to="/">
+        <Link to="/chat">
           <i>{BackIcon}</i>
-          <span>Voltar para Home</span>
+          <span>Voltar para conversas</span>
         </Link>
       </ReturnHome>
       <ChatHeader>
@@ -150,6 +150,7 @@ const ChatContainer = props => {
             onChange={e => setMessage(e.target.value)}
             type="text"
             placeholder="O início de uma grande conversa.."
+            required
           />
           <SubmitMessage>{SubmitMessageIcon}</SubmitMessage>
         </MessageForm>

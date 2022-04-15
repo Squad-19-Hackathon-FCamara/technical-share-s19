@@ -67,9 +67,7 @@ export const UserTags = styled.div`
   }
 `
 
-export const ChatButton = styled.button`
-  background-color: transparent;
-  border: none;
+export const ChatButton = styled.span`
   position: absolute;
   top: 0;
   right: 0;
@@ -77,7 +75,6 @@ export const ChatButton = styled.button`
   z-index: 9;
 
   &:hover, &:focus, &:active {
-    cursor: pointer;
     box-shadow: 0 0px 2px 0 rgb(0 0 0 / 40%);
   }
 `

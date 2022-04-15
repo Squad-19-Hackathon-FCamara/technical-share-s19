@@ -17,8 +17,11 @@ const Header = (props) => {
 
   return (
     <HeaderContent displayMobile={props.buttons ? "flex" : "none"}>
+
       <HeaderContainer>
-        {OrangeIcon}
+        <Link to={'/'}>
+          {OrangeIcon}
+        </Link>
       </HeaderContainer>
 
       {

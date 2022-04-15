@@ -6,3 +6,12 @@
   padding: 0;
   font-family: 'Metropolis', sans-serif;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:hover, a:focus, a:active {
+  cursor: pointer;
+  text-decoration: underline;
+}
