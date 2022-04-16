@@ -77,7 +77,10 @@ OBSERVAÇÃO: nosso projeto está dividido em dois repositórios no GitHub. O tu
   * Chat em tempo real com integrantes da FCamara para mentorias, solução de dúvidas e desenvolvimento de novos conhecimentos;
   * Armazenamento dos chats em banco de dados para consultas posteriores.
   <br/>
-  Para maiores detalhes acerca dos resultados de desenvolvimento, consulte este [readme]() específico.
+  
+  
+  Para maiores detalhes acerca dos resultados de desenvolvimento, consulte este [readme](readmeDevelopment.md) específico.
+  
   
   <h2 id="features">Futuras implementações</h2>
   
@@ -92,10 +95,9 @@ OBSERVAÇÃO: nosso projeto está dividido em dois repositórios no GitHub. O tu
   * Adição de página para visualizar as mentorias agendadas para o usuário logado;
   
   <h2 id="conteudoexterno">Conteúdo externo</h2>
-  
-  * Confira de forma prática a utilização da nossa plataforma através do nosso [vídeo de funcionalidades]()!
-  * Nosso artigo traz toda a visão do nosso processo de desenvolvimento. Confira ele por [aqui]() :)
-  * Não deixe de ver nosso [Pitch]()
+  * Nosso artigo traz toda a visão do nosso processo de desenvolvimento. Confira ele por aqui: https://medium.com/@mayumi.adati/technical-share-como-uma-plataforma-digital-pode-formar-l%C3%ADderes-comprometidos-e-capazes-de-2db0e13ed130 
+  * Confira de forma prática a utilização da nossa plataforma através do nosso vídeo de funcionalidades: https://youtu.be/CxdYvmqpiOM
+  * Não deixe de ver nosso Pitch: https://youtu.be/fvCWYr44PHo
   
   <h2 id="nossosquad">Nosso Squad</h2>
 
