@@ -117,8 +117,7 @@ const ChatContainer = props => {
             currentChatName
           ) : (
             <p>
-              Bem vindo aos chats! Escolha uma conversa e comece a tirar suas
-              dúvidas!
+              Uma pequena conversa, um grande salto para o sangue laranja!
             </p>
           )}
         </h2>
@@ -139,7 +138,7 @@ const ChatContainer = props => {
           })
         ) : (
           <ChatBoxInformation>
-            Selecione uma conversa ao lado esquerdo para iniciar
+            Selecione um mentor/a na página principal ou uma conversa na aba lateral para continuar sua jornada de aprendizado.
           </ChatBoxInformation>
         )}
       </ChatBox>
